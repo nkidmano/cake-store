@@ -1,0 +1,42 @@
+// COLOR VARIBLES
+$color-white: #fff;
+$color-black: #000;
+
+$color-primary: #393939;
+
+$color-brown-light-1: #D7A554;
+$color-brown-light-2: #F0D6A6;
+$color-brown-light-3: #CFB193;
+
+$color-brown-dark-1: #A95834;
+$color-brown-dark-2: #533828;
+
+$color-grey-light-1: #FAF6E6;
+
+$color-grey-dark-1: #807E6F;
+
+// FONT VARIBLES
+$font-primary: 'Lato', sans-serif;
+$font-display: 'Yeseva One', cursive;
+
+// RESPONSIVE BREAKPOINT
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-primary;
+    font-weight: 300;
+    line-height: 1.6;
+    color: $color-white;
+}
