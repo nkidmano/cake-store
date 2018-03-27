@@ -1,4 +1,7 @@
 .header {
-    background-color: $color-brown-dark-1;
     grid-column: full-start / full-end;
+    
+    background-image: url("../img/hero.jpg");
+    background-size: cover;
+    background-position: center;    
 }
