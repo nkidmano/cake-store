@@ -1,0 +1,42 @@
+%heading {
+    font-family: $font-display;
+}
+
+.heading-1 {
+    @extend %heading;
+    
+    &--white{ color: $color-white; }
+}
+
+.heading-2 {
+    @extend %heading;
+    font-size: 6rem;
+    letter-spacing: 2px;
+
+    &--white{ color: $color-white; }
+    &--black{ color: $color-primary; }
+    &--brown{ color: $color-brown-light-2 }
+}
+
+.heading-3 {
+    @extend %heading;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+
+    &--white{ color: $color-white; }
+    &--black{ color: $color-primary; }
+}
+
+.heading-4 {
+    font-family: $font-secondary;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $color-brown-dark-1;
+}
+
+.mb-sm { margin-bottom: 2rem; }
+.mb-md { margin-bottom: 3rem; }
+.mb-lg { margin-bottom: 4rem; }
+.mb-hg { margin-bottom: 8rem; }

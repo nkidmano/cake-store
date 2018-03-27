@@ -1,4 +1,103 @@
 .overview {
-    background-color: $color-grey-light-1;
+    grid-column: center-start / center-end;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 5rem;
+    justify-content: center;
+}   
+
+
+.content {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+
+    font-family: $font-primary;
+    padding: 3rem;
+
+    &__title {
+        grid-column: 1 / -1;
+        align-self: end;
+    }
+
+    &__subtitle {
+        grid-column: 1 / -1;
+        align-self: start;
+    }
+
+    &__profession {
+        grid-column: 1 / -1;
+    }
+
+    &__text {
+        grid-column: 1 / -1;
+        align-self: start;
+
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 0 5rem;
+    }
+
+    &__avatar-img { 
+        grid-column: 2 / 3;
+
+        height: 12rem;
+        border: .4rem solid rgba($color-brown-dark-1, .4);
+        padding: .5rem;
+        border-radius: 50%;
+        display: block;
+
+        // &::before,
+        // &::after {
+        //     content: "";
+        //     height: 12rem;
+        //     display: block;
+        //     border: 2px solid $color-brown-dark-1;
+        //     border-radius: 50%;
+        //     height: 12rem;
+        // }
+    }
+
+    &__avatar-name {
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: center;
+        
+        &--1 {
+            width: 70%;
+            grid-column: 1 / 2;
+            grid-row: 5 / 6;
+            justify-self: end;
+
+            border-top: 1px solid #aaa;
+            border-bottom: 1px solid #aaa;
+            padding: .5rem;
+        }
+
+        &--2 {
+            width: 70%;
+            grid-column: 3 / 4;
+            grid-row: 5 / 6;
+            justify-self: start;
+
+            border-top: 1px solid #aaa;
+            border-bottom: 1px solid #aaa;
+            padding: .5rem;
+        }
+    }
+
+    &__quote {
+        grid-column: 1 / -1;
+
+        font-family: $font-display;
+        font-style: italic;
+        font-size: 2.5rem;
+        color: $color-brown-dark-1;
+        text-align: center;
+    }
 }
 
+//kaylee peterson

@@ -8,7 +8,7 @@ $color-brown-light-1: #D7A554;
 $color-brown-light-2: #F0D6A6;
 $color-brown-light-3: #CFB193;
 
-$color-brown-dark-1: #A95834;
+$color-brown-dark-1: #b06b3e;
 $color-brown-dark-2: #533828;
 
 $color-grey-light-1: #FAF6E6;
@@ -17,7 +17,9 @@ $color-grey-dark-1: #807E6F;
 
 // FONT VARIBLES
 $font-primary: 'Lato', sans-serif;
+$font-secondary: 'Times New Roman', Times;
 $font-display: 'Yeseva One', cursive;
+
 
 // RESPONSIVE BREAKPOINT
 
@@ -36,11 +38,15 @@ html {
 
 body {
     font-family: $font-primary;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.6;
-    color: $color-white;
 }
 
 .container {
-    
+    display: grid;
+    grid-template-rows: 100vh 100vh 90vh 90vh 90vh min-content;
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+    background-color: #eee;    
+    color: $color-primary;
 }

@@ -11,27 +11,139 @@ html {
 
 body {
   font-family: "Lato", sans-serif;
-  font-weight: 300;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.6; }
+
+.container {
+  display: grid;
+  grid-template-rows: 100vh 100vh 90vh 90vh 90vh min-content;
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  background-color: #eee;
+  color: #393939; }
+
+.heading-1, .heading-2, .heading-3 {
+  font-family: "Yeseva One", cursive; }
+
+.heading-1--white {
   color: #fff; }
 
-.navbar {
-  background-color: #000; }
+.heading-2 {
+  font-size: 6rem;
+  letter-spacing: 2px; }
+  .heading-2--white {
+    color: #fff; }
+  .heading-2--black {
+    color: #393939; }
+  .heading-2--brown {
+    color: #F0D6A6; }
+
+.heading-3 {
+  font-size: 2.5rem;
+  letter-spacing: 1px; }
+  .heading-3--white {
+    color: #fff; }
+  .heading-3--black {
+    color: #393939; }
+
+.heading-4 {
+  font-family: "Times New Roman", Times;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b06b3e; }
+
+.mb-sm {
+  margin-bottom: 2rem; }
+
+.mb-md {
+  margin-bottom: 3rem; }
+
+.mb-lg {
+  margin-bottom: 4rem; }
+
+.mb-hg {
+  margin-bottom: 8rem; }
 
 .header {
-  background-color: #A95834; }
+  background-color: #b06b3e;
+  grid-column: full-start / full-end; }
 
 .overview {
-  background-color: #FAF6E6; }
+  grid-column: center-start / center-end;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 5rem;
+  justify-content: center; }
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+  padding: 3rem; }
+  .content__title {
+    grid-column: 1 / -1;
+    align-self: end; }
+  .content__subtitle {
+    grid-column: 1 / -1;
+    align-self: start; }
+  .content__profession {
+    grid-column: 1 / -1; }
+  .content__text {
+    grid-column: 1 / -1;
+    align-self: start;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0 5rem; }
+  .content__avatar-img {
+    grid-column: 2 / 3;
+    height: 12rem;
+    border: 0.4rem solid rgba(176, 107, 62, 0.4);
+    padding: .5rem;
+    border-radius: 50%;
+    display: block; }
+  .content__avatar-name {
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center; }
+    .content__avatar-name--1 {
+      width: 70%;
+      grid-column: 1 / 2;
+      grid-row: 5 / 6;
+      justify-self: end;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #aaa;
+      padding: .5rem; }
+    .content__avatar-name--2 {
+      width: 70%;
+      grid-column: 3 / 4;
+      grid-row: 5 / 6;
+      justify-self: start;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #aaa;
+      padding: .5rem; }
+  .content__quote {
+    grid-column: 1 / -1;
+    font-family: "Yeseva One", cursive;
+    font-style: italic;
+    font-size: 2.5rem;
+    color: #b06b3e;
+    text-align: center; }
 
 .features {
-  background-color: #D7A554; }
+  background-color: #D7A554;
+  grid-column: full-start / full-end; }
 
 .breakfast {
-  background-color: #807E6F; }
+  background-color: #807E6F;
+  grid-column: full-start / full-end; }
 
 .lunch {
-  background-color: #CFB193; }
+  background-color: #CFB193;
+  grid-column: full-start / full-end; }
 
 .footer {
-  background-color: #533828; }
+  background-color: #533828;
+  grid-column: center-start / center-end; }
