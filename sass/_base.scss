@@ -4,26 +4,26 @@ $color-black: #000;
 
 $color-primary: #393939;
 
-$color-brown-light-1: #D7A554;
-$color-brown-light-2: #F0D6A6;
-$color-brown-light-3: #CFB193;
+$color-orange-dark-1: #e87024;
+$color-orange-dark-2: #ee5c13;
 
-$color-brown-dark-1: #b06b3e;
-$color-brown-dark-2: #533828;
+$color-brown-light-1: #D49D5A;
 
-$color-grey-light-1: #FAF6E6;
+$color-brown-dark-1: #AE6637;
 
-$color-grey-dark-1: #807E6F;
+$color-grey-light-1: #F2F2EF;
+$color-grey-light-2: #B8B7A4;
+
+$color-green-light-1: #B5AB4F;
+$color-green-light-2: #B6A337;
 
 // FONT VARIBLES
 $font-primary: 'Lato', sans-serif;
-$font-secondary: 'Times New Roman', Times;
 $font-display: 'Yeseva One', cursive;
-
 
 // RESPONSIVE BREAKPOINT
 
-*,z
+*,
 *::before,
 *::after {
     margin: 0;
@@ -37,6 +37,7 @@ html {
 }
 
 body {
+    color: $color-primary;      
     font-family: $font-primary;
     font-weight: 400;
     line-height: 1.6;
@@ -44,9 +45,6 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 110vh min-content 100vh;
-    grid-template-columns: [full-start] minmax(3rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(3rem, 1fr) [full-end];
-
-    background-color: #eee;    
-    color: $color-primary;  
+    grid-template-rows: 50rem;
+    grid-template-columns: [full-start] minmax(5em, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(5rem, 1fr) [full-end];
 }
