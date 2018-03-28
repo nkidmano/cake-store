@@ -23,7 +23,7 @@ $font-display: 'Yeseva One', cursive;
 
 // RESPONSIVE BREAKPOINT
 
-*,
+*,z
 *::before,
 *::after {
     margin: 0;
@@ -44,9 +44,9 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 100vh 100vh;
-    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    grid-template-rows: 110vh 50vw 50vw;
+    grid-template-columns: [full-start] minmax(3rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(3rem, 1fr) [full-end];
 
     background-color: #eee;    
-    color: $color-primary;
+    color: $color-primary;  
 }

@@ -4,7 +4,8 @@
 
 .heading-1 {
     @extend %heading;
-    
+    font-size: 8rem;
+    line-height: 1;
     &--white{ color: $color-white; }
 }
 
@@ -36,7 +37,28 @@
     color: $color-brown-dark-1;
 }
 
+.btn {
+    background-color: rgba($color-black, .4);
+    color: $color-white;
+    border: 1px solid rgba($color-white, .8);
+    font-size: 2rem;
+    font-family: $font-display;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 5rem;
+    cursor: pointer;
+    }
+
+.btn-ghost {
+
+}
+
 .mb-sm { margin-bottom: 2rem; }
 .mb-md { margin-bottom: 3rem; }
 .mb-lg { margin-bottom: 4rem; }
 .mb-hg { margin-bottom: 8rem; }
+
+.mt-sm { margin-top: 2rem; }
+.mt-md { margin-top: 3rem; }
+.mt-lg { margin-top: 4rem; }
+.mt-hg { margin-top: 8rem; }

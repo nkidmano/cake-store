@@ -1,5 +1,4 @@
-*,
-*::before,
+*, z *::before,
 *::after {
   margin: 0;
   padding: 0;
@@ -16,16 +15,19 @@ body {
 
 .container {
   display: grid;
-  grid-template-rows: 100vh 100vh;
-  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  grid-template-rows: 110vh 50vw 50vw;
+  grid-template-columns: [full-start] minmax(3rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(3rem, 1fr) [full-end];
   background-color: #eee;
   color: #393939; }
 
 .heading-1, .heading-2, .heading-3 {
   font-family: "Yeseva One", cursive; }
 
-.heading-1--white {
-  color: #fff; }
+.heading-1 {
+  font-size: 8rem;
+  line-height: 1; }
+  .heading-1--white {
+    color: #fff; }
 
 .heading-2 {
   font-size: 6rem;
@@ -53,6 +55,17 @@ body {
   letter-spacing: 1px;
   color: #b06b3e; }
 
+.btn {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  font-size: 2rem;
+  font-family: "Yeseva One", cursive;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 5rem;
+  cursor: pointer; }
+
 .mb-sm {
   margin-bottom: 2rem; }
 
@@ -65,11 +78,68 @@ body {
 .mb-hg {
   margin-bottom: 8rem; }
 
+.mt-sm {
+  margin-top: 2rem; }
+
+.mt-md {
+  margin-top: 3rem; }
+
+.mt-lg {
+  margin-top: 4rem; }
+
+.mt-hg {
+  margin-top: 8rem; }
+
 .header {
   grid-column: full-start / full-end;
-  background-image: url("../img/hero.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/hero-1.jpg");
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  color: #fff; }
+
+.navbar-wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; }
+
+.navbar {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  padding: .5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .navbar__item {
+    font-family: "Yeseva One", cursive;
+    list-style: none;
+    letter-spacing: 1px; }
+    .navbar__item:not(:first-child) {
+      margin-top: 1rem; }
+  .navbar__link {
+    text-transform: uppercase;
+    font-size: 1.75rem; }
+    .navbar__link--brand {
+      font-size: 4rem;
+      text-transform: none; }
+  .navbar__link:link, .navbar__link:visited {
+    text-decoration: none;
+    color: #fff; }
+
+.landing {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .landing__title::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: currentColor;
+    margin: 4rem; }
+  .landing__text {
+    font-size: 2rem; }
 
 .overview {
   grid-column: center-start / center-end;
@@ -137,12 +207,13 @@ body {
     padding: 0 2rem; }
 
 .picture {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  background-color: #fff;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
   padding: 1.5rem;
   margin: 5rem 0;
-  background-color: #fff; }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr); }
   .picture__item--1 {
     grid-column: 1 / 3;
     grid-row: 1 / 3; }
@@ -172,8 +243,10 @@ body {
     font-family: "Times New Roman", Times; }
 
 .features {
-  background-color: #D7A554;
-  grid-column: full-start / full-end; }
+  grid-column: full-start / full-end;
+  background-image: url("../img/hero-2.jpg");
+  background-size: cover;
+  background-position: center; }
 
 .breakfast {
   background-color: #807E6F;
