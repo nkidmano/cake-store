@@ -6,20 +6,25 @@
     color: $color-white;
 }
 
-.navbar-wrapper {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
+// .navbar-wrapper {
+//     width: 100%;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     z-index: 1000;
+// }
 
 .navbar {
     background-image: linear-gradient(rgba($color-black, .5), rgba($color-black, .5));
-    padding: .5rem;
+    padding: 1rem 8rem;
 
-    display: flex;
-    justify-content: space-around;
+    // display: flex;
+    // justify-content: space-around;
+    // align-items: center;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    justify-items: center;
     align-items: center;
 
     &__item {
@@ -34,7 +39,7 @@
 
     &__link {
         text-transform: uppercase;        
-        font-size: 1.75rem;
+        font-size: 1.5rem;
 
         &--brand {
             font-size: 4rem;
