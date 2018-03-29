@@ -15,8 +15,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-rows: 110vh 50vw 50vw;
-  grid-template-columns: [full-start] minmax(3rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(3rem, 1fr) [full-end];
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(7, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
   background-color: #eee;
   color: #393939; }
 
@@ -24,8 +23,7 @@ body {
   font-family: "Yeseva One", cursive; }
 
 .heading-1 {
-  font-size: 8rem;
-  line-height: 1; }
+  font-size: 4rem; }
   .heading-1--white {
     color: #fff; }
 
@@ -76,7 +74,7 @@ body {
   margin-bottom: 4rem; }
 
 .mb-hg {
-  margin-bottom: 8rem; }
+  margin-bottom: 6rem; }
 
 .mt-sm {
   margin-top: 2rem; }
@@ -88,174 +86,106 @@ body {
   margin-top: 4rem; }
 
 .mt-hg {
-  margin-top: 8rem; }
+  margin-top: 6rem; }
 
 .header {
   grid-column: full-start / full-end;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/hero-1.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff; }
-
-.navbar-wrapper {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000; }
-
-.navbar {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  padding: .5rem;
+  background-color: #393939;
+  font-size: 2rem;
+  font-weight: 400;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center; }
-  .navbar__item {
-    font-family: "Yeseva One", cursive;
+
+.page-nav {
+  display: flex;
+  align-items: center; }
+  .page-nav__item {
     list-style: none;
-    letter-spacing: 1px; }
-    .navbar__item:not(:first-child) {
-      margin-top: 1rem; }
-  .navbar__link {
     text-transform: uppercase;
-    font-size: 1.75rem; }
-    .navbar__link--brand {
-      font-size: 4rem;
-      text-transform: none; }
-  .navbar__link:link, .navbar__link:visited {
+    border-right: 1px solid #807E6F;
+    align-self: stretch;
+    display: flex; }
+  .page-nav__link:link, .page-nav__link:visited {
     text-decoration: none;
-    color: #fff; }
+    color: #fff;
+    padding: 3rem;
+    background-color: transparent;
+    transition: all .2s;
+    align-self: center; }
+  .page-nav__link:hover, .page-nav__link:active {
+    background-color: rgba(0, 0, 0, 0.5); }
+  .page-nav__link--logo:link, .page-nav__link--logo:visited {
+    text-decoration: none;
+    text-transform: none;
+    font-family: "Yeseva One", cursive;
+    font-size: 5rem;
+    color: #fff;
+    padding: 0 1rem;
+    align-self: center; }
 
-.landing {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
-  .landing__title::after {
-    content: "";
-    display: block;
-    height: 1px;
-    background-color: currentColor;
-    margin: 4rem; }
-  .landing__text {
-    font-size: 2rem; }
+.search-nav {
+  display: flex;
+  align-self: stretch;
+  color: #FAF6E6;
+  padding-left: 2rem;
+  flex: 1; }
+  .search-nav__input {
+    font-size: 3rem;
+    outline: none;
+    border: 0;
+    background-color: inherit;
+    color: #FAF6E6; }
 
-.overview {
+.user-nav {
+  display: flex; }
+  .user-nav__item {
+    list-style: none;
+    text-transform: uppercase;
+    border-left: 1px solid #807E6F;
+    align-self: stretch;
+    display: flex; }
+  .user-nav__link:link, .user-nav__link:visited {
+    text-decoration: none;
+    color: #fff;
+    padding: 3rem;
+    transition: all .2s; }
+  .user-nav__link:hover, .user-nav__link:active {
+    background-color: rgba(0, 0, 0, 0.5); }
+
+.cakes {
   grid-column: center-start / center-end;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(46rem, 1fr));
-  grid-column-gap: 5rem;
-  justify-content: center; }
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem 3rem; }
 
-.content {
-  display: grid;
-  grid-template-columns: 1fr min-content 1fr;
-  justify-items: center;
-  align-items: center;
-  font-family: "Lato", sans-serif;
-  padding: 0 2rem;
-  margin: 5rem 0; }
-  .content__title {
-    grid-column: 1 / -1;
-    align-self: end; }
-  .content__subtitle {
-    grid-column: 1 / -1;
-    align-self: start; }
-  .content__profession {
-    grid-column: 1 / -1; }
-  .content__text {
-    grid-column: 1 / -1;
-    align-self: start;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 0 7rem; }
-  .content__avatar-img {
-    grid-column: 2 / 3;
-    height: 12rem;
-    border: 0.4rem solid rgba(176, 107, 62, 0.4);
-    padding: .5rem;
-    border-radius: 50%;
-    display: block; }
-  .content__avatar-name {
-    font-size: 2rem;
-    font-weight: 300;
-    text-align: center; }
-    .content__avatar-name--1 {
-      width: 70%;
-      grid-column: 1 / 2;
-      grid-row: 5 / 6;
-      justify-self: end;
-      border-top: 1px solid #aaa;
-      border-bottom: 1px solid #aaa;
-      padding: .5rem; }
-    .content__avatar-name--2 {
-      width: 70%;
-      grid-column: 3 / 4;
-      grid-row: 5 / 6;
-      justify-self: start;
-      border-top: 1px solid #aaa;
-      border-bottom: 1px solid #aaa;
-      padding: .5rem; }
-  .content__quote {
-    grid-column: 1 / -1;
-    font-family: "Yeseva One", cursive;
-    font-style: italic;
-    font-size: 2.5rem;
-    color: #b06b3e;
-    text-align: center;
-    padding: 0 2rem; }
+.cake-heading {
+  grid-column: 1 / -1; }
 
-.picture {
+.cake {
   background-color: #fff;
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
-  padding: 1.5rem;
-  margin: 5rem 0;
+  border: none;
+  border-radius: .4px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr); }
-  .picture__item--1 {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3; }
-  .picture__item--2 {
-    grid-column: 3 / 5;
-    grid-row: 1 / 3; }
-  .picture__item--3 {
-    grid-column: 1 / 3;
-    grid-row: 3 / 5; }
-  .picture__item--4 {
-    grid-column: 3 / 5;
-    grid-row: 3 / 5; }
-  .picture__img {
-    display: block;
+  align-items: center; }
+  .cake__img {
     width: 100%;
     height: 100%;
     object-fit: cover; }
-  .picture__text {
-    grid-column: 2 / 4;
-    grid-row: 2 / 4;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 4rem;
-    color: #D7A554;
-    padding: 2rem;
-    background-color: #b06b3e;
-    font-family: "Times New Roman", Times; }
-
-.features {
-  grid-column: full-start / full-end;
-  background-image: url("../img/hero-2.jpg");
-  background-size: cover;
-  background-position: center; }
-
-.breakfast {
-  background-color: #807E6F;
-  grid-column: full-start / full-end; }
-
-.lunch {
-  background-color: #CFB193;
-  grid-column: full-start / full-end; }
-
-.footer {
-  background-color: #533828;
-  grid-column: center-start / center-end; }
+  .cake__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding-top: .5rem;
+    padding-left: 2rem; }
+  .cake__description {
+    font-size: 1.25rem;
+    padding: 1.25rem 2rem; }
+  .cake__cta {
+    background-color: #eee;
+    padding: 1rem 2rem; }
+  .cake__link:link, .cake__link:visited {
+    font-weight: 700;
+    color: #393939;
+    text-decoration: none;
+    font-size: 1.35rem; }
