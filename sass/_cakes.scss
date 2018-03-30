@@ -3,7 +3,7 @@
     grid-column: center-start / center-end;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
     grid-gap: 2rem 3rem;
 
 }
@@ -14,45 +14,63 @@
 
 .cake {
     background-color: $color-white;
-    box-shadow: 0 2rem 4rem rgba($color-black, .2);
-    border: none;
-    border-radius: .4px;
+    box-shadow: 0 .25rem .5rem rgba($color-black, .2);
+    
+    display: flex;
+    flex-direction: column;
 
-    display: grid;
-    align-items: center;
+    &__icon {
 
-    &__picture {
-        
     }
 
-    &__img {
-        width: 100%;
+    &__thumbnail {
+        position: relative
+    }
+
+    &__thumbnail::before {
+        content: "";
+        display: block;
+        position: absolute;
         height: 100%;
-        object-fit: cover;
+        width: 100%;
+        top: 0;
+        right: 0;
+        background: linear-gradient(to right, rgba(#40e0d0, .25), rgba(#ff8c00, .3), rgba(#ff0080, .2));
+    }
+    
+    &__photo {
+        width: 100%;
+        display: block;
     }
 
-    &__title {
-        font-size: 2.5rem;
+    &__name {
+        font-size: 2rem;
         font-weight: 700;
-        padding-top: .5rem;
-        padding-left: 2rem;
+        padding: 1rem 1rem 0 1rem;
+        color: coral;        
     }
 
     &__description {
         font-size: 1.25rem;
-        padding: 1.25rem 2rem;
+        padding: .5rem 1rem;
     }
 
-    &__cta {
-        background-color: #eee;
-        padding: 1rem 2rem;
-    }
-
-    &__link:link,
-    &__link:visited {
+    &__info {
+        font-size: 1.45rem;
         font-weight: 700;
-        color: $color-primary;
+        padding: 1.25rem 1rem;
+        
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__order:link,
+    &__order:visited {
         text-decoration: none;
-        font-size: 1.35rem;
+        color: $color-primary;
+    }
+
+    &__price {
+
     }
 }

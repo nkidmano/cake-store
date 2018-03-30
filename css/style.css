@@ -156,7 +156,7 @@ body {
 .cakes {
   grid-column: center-start / center-end;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   grid-gap: 2rem 3rem; }
 
 .cake-heading {
@@ -164,28 +164,37 @@ body {
 
 .cake {
   background-color: #fff;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: .4px;
-  display: grid;
-  align-items: center; }
-  .cake__img {
-    width: 100%;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; }
+  .cake__thumbnail {
+    position: relative; }
+  .cake__thumbnail::before {
+    content: "";
+    display: block;
+    position: absolute;
     height: 100%;
-    object-fit: cover; }
-  .cake__title {
-    font-size: 2.5rem;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(64, 224, 208, 0.25), rgba(255, 140, 0, 0.3), rgba(255, 0, 128, 0.2)); }
+  .cake__photo {
+    width: 100%;
+    display: block; }
+  .cake__name {
+    font-size: 2rem;
     font-weight: 700;
-    padding-top: .5rem;
-    padding-left: 2rem; }
+    padding: 1rem 1rem 0 1rem;
+    color: coral; }
   .cake__description {
     font-size: 1.25rem;
-    padding: 1.25rem 2rem; }
-  .cake__cta {
-    background-color: #eee;
-    padding: 1rem 2rem; }
-  .cake__link:link, .cake__link:visited {
+    padding: .5rem 1rem; }
+  .cake__info {
+    font-size: 1.45rem;
     font-weight: 700;
-    color: #393939;
+    padding: 1.25rem 1rem;
+    display: flex;
+    justify-content: space-between; }
+  .cake__order:link, .cake__order:visited {
     text-decoration: none;
-    font-size: 1.35rem; }
+    color: #393939; }
