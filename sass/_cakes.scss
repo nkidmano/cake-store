@@ -15,12 +15,19 @@
 .cake {
     background-color: $color-white;
     box-shadow: 0 .25rem .5rem rgba($color-black, .2);
+    position: relative;
+    backface-visibility: hidden;
+    transition: all .2s ease;
     
     display: flex;
     flex-direction: column;
 
-    &__icon {
+    &__icon-box {
+        
+    }
 
+    &__icon {
+        
     }
 
     &__thumbnail {
@@ -73,4 +80,9 @@
     &__price {
 
     }
+
+    &:hover {
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+    }
 }
+

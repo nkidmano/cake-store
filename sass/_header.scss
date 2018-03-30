@@ -1,95 +1,162 @@
-.header {
-    grid-column: full-start / full-end;
+.navbar {
     background-color: $color-primary;
-    font-size: 2rem;
-    font-weight: 400;
+    grid-column: full-start / full-end;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    color: #9E9E9E;
+    font-size: 1.8rem;
+    letter-spacing: .1rem;
+    padding: 0 2rem;
 }
 
-.page-nav {
-    display: flex;
-    align-items: center;
+.logo-box {
+    color: #EEEEEE;
 
-    &__item {
-        list-style: none;
-        text-transform: uppercase;
-        border-right: 1px solid $color-grey-dark-1;
-        align-self: stretch;
-        
-        display: flex;
+    &__link {
+        text-decoration: none;
+        color: inherit;
+        font-size: 2.5rem;
     }
 
-    &__link:link,
-    &__link:visited, {
-        text-decoration: none;
-        color: $color-white;
-        padding: 3rem;
-        background-color: transparent;
+    &__link strong {
+        text-transform: uppercase;
+        font-weight: 900;
+        margin-left: .2rem;
+    }
+}
+
+.category-nav {
+    list-style: none;
+    font-weight: 700;
+
+    display: flex;
+
+    &__item {
+        margin-top: .5rem;
+
+        &:not(:last-child) {
+            margin-right: 2.5rem;
+        }
+    }
+
+    &__icon {
         transition: all .2s;
-
-        align-self: center;
-    }
-
-    &__link:hover,
-    &__link:active {
-        background-color: rgba($color-black, .5);
-    }
-
-    &__link--logo:link,
-    &__link--logo:visited {
-        text-decoration: none;
-        text-transform: none;
-        font-family: $font-display;
-        font-size: 5rem;
-        color: $color-white;
-        padding: 0 1rem;
-        
-        align-self: center;
-    }
-}
-
-.search-nav{
-    display: flex;
-    align-self: stretch;
-    color: $color-grey-light-1;
-    padding-left: 2rem;
-
-    flex: 1;
-        
-    &__input {
-        font-size: 3rem;
-        outline: none;
-        border: 0;
-        background-color: inherit;
-        color: #FAF6E6;
-    }
-}
-
-.user-nav {
-    display: flex;
-
-    &__item {
-        list-style: none;
-        text-transform: uppercase;
-        border-left: 1px solid $color-grey-dark-1;
-        align-self: stretch;
-
-        display: flex;
     }
 
     &__link:link,
     &__link:visited {
         text-decoration: none;
-        color: $color-white;
-        padding: 3rem;
+        text-transform: uppercase;
+        color: inherit;
         transition: all .2s;
     }
 
-    &__link:hover,
-    &__link:active {
-        background-color: rgba($color-black, .5);
+    &__link:hover {
+        color: #fff;
+    }
+
+    &__link:hover + &__icon {
+        color: #fff;
+    }
+}
+
+.search {
+    flex: 0 0 25%;
+
+    display: flex;
+
+    &__input {
+        outline: none;
+        font-family: inherit;
+        font-size: 1.4rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 4px;
+        background-color: #757575;
+        color: #424242;
+        width: 100%;
+        height: 4.5rem;
+        padding-left: 1.5rem;
+
+        &::-webkit-input-placeholder {
+            font-weight: 700;
+            color: #424242;
+        }
+    }
+
+    &__button {
+        background-color: #757575;
+        padding: 0 1.5rem 0 .5rem; 
+        border: none;
+        border-radius: 0 .4rem .4rem 0;
+        display: flex;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        color: #424242;
+    }
+}
+
+.user-nav {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+
+    [class$="-link"] {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: inherit;
+        padding: 1rem;
+        transition: all .2s; 
+    }
+
+    &__login-link {
+        border: 2px solid #9E9E9E;
+        border-radius: .4rem 0 0 .4rem;
+        border-right: none;
+
+        display: flex;
+        align-items: center;
+    }
+
+    &__login-link:hover {
+        color: #fff;
+        border: 2px solid #fff;
+        border-right: none;
+    }
+
+    &__login-link:hover + &__signup-link {
+        border-left: 2px solid #fff;
+    }
+
+    &__login-link:hover > &__icon {
+        color: #fff;
+    }
+
+    &__signup-link {
+        border: 2px solid #9E9E9E;
+        border-radius: 0 .4rem .4rem 0;
+
+        display: flex;
+    }
+
+    &__signup-link:hover {
+        color: #fff;
+        border: 2px solid #fff;
+    }
+
+    &__icon {
+        font-size: 2.5rem;
+        margin-right: .5rem;
+        transition: all .2s;
     }
 }

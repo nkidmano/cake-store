@@ -10,38 +10,47 @@
 </head>
 <body class="container">
 
-    <header class="header">
-        <div class="page-nav">
-            <li class="page-nav__item">
-                <a href="#" class="page-nav__link--logo">Molino</a>
-            </li>
-            <li class="page-nav__item">
-                <a href="#" class="page-nav__link">Menu</a>
-            </li>
-            <li class="page-nav__item">
-                <a href="#" class="page-nav__link">Top</a>
-            </li>
+    <nav class="navbar">
+        <div class="logo-box">
+            <a href="#" class="logo-box__link">
+                <strong>Molino</strong>
+            </a>
         </div>
-        <form action="#" class="search-nav">
-            <input type="text" class="search-nav__input" placeholder="Cake, bread...">
+        <ul class="category-nav">
+            <li class="category-nav__item">
+                <a href="#" class="category-nav__link">Menu</a>
+                <i class="category-nav__icon far fa-list-alt"></i>
+            </li>
+            <li class="category-nav__item">
+                <a href="#" class="category-nav__link">Top 10</a>
+                <i class="category-nav__icon fas fa-trophy"></i>
+            </li>
+            <li class="category-nav__item">
+                <a href="#" class="category-nav__link">Map</a>
+                <i class="category-nav__icon fas fa-map"></i>
+            </li>
+        </ul>
+        <form action="#" class="search">
+            <input type="text" class="search__input" placeholder="Search">
         </form>
         <div class="user-nav">
-            <li class="user-nav__item">
-                <a href="#" class="user-nav__link">Register</a>
-            </li>
-            <li class="user-nav__item">
-                <a href="#" class="user-nav__link">Log In</a>
-            </li>
+            <a href="#" class="user-nav__login-link">
+                <i class="user-nav__icon fas fa-user-circle"></i>
+                <span class="user-nav__login-text">login</span>
+            </a>
+            <a href="#" class="user-nav__signup-link">
+                <span class="user-nav_signup-text">sign up</span>
+            </a>
         </div>
-    </header>
+    </nav>
 
-    <div class="cakes">
-        <h1 class="cake-heading heading-1 mt-hg mb-lg">Menus</h1>
+    <div class="cakes mb-hg">
+        <h1 class="cake-heading heading-1 mt-hg mb-md">Menus</h1>
         
         <div class="cake">
-            <div class="cake__icon">
-                
-            </div>
+            <!-- <div class="cake__icon-box">
+                <i class="cake__icon far fa-comments"></i>
+            </div> -->
             <div class="cake__thumbnail">
                 <img src="img/test-1.jpg" alt="Cake" class="cake__photo">
             </div>
@@ -49,7 +58,7 @@
                 Honey lasfe bread
             </div>
             <div class="cake__description">
-                Bake with honey and sorcery power, made for diet people.
+                Baked with honey and sorcery powder, made for diet people.
             </div>
             <div class="cake__info">
                 <a href="#" class="cake__order">Order now</a>

@@ -15,6 +15,7 @@ body {
 
 .container {
   display: grid;
+  grid-template-rows: 8rem;
   grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(7, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
   background-color: #eee;
   color: #393939; }
@@ -88,70 +89,114 @@ body {
 .mt-hg {
   margin-top: 6rem; }
 
-.header {
-  grid-column: full-start / full-end;
+.navbar {
   background-color: #393939;
-  font-size: 2rem;
-  font-weight: 400;
+  grid-column: full-start / full-end;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  color: #9E9E9E;
+  font-size: 1.8rem;
+  letter-spacing: .1rem;
+  padding: 0 2rem; }
 
-.page-nav {
-  display: flex;
-  align-items: center; }
-  .page-nav__item {
-    list-style: none;
+.logo-box {
+  color: #EEEEEE; }
+  .logo-box__link {
+    text-decoration: none;
+    color: inherit;
+    font-size: 2.5rem; }
+  .logo-box__link strong {
     text-transform: uppercase;
-    border-right: 1px solid #807E6F;
-    align-self: stretch;
-    display: flex; }
-  .page-nav__link:link, .page-nav__link:visited {
-    text-decoration: none;
-    color: #fff;
-    padding: 3rem;
-    background-color: transparent;
-    transition: all .2s;
-    align-self: center; }
-  .page-nav__link:hover, .page-nav__link:active {
-    background-color: rgba(0, 0, 0, 0.5); }
-  .page-nav__link--logo:link, .page-nav__link--logo:visited {
-    text-decoration: none;
-    text-transform: none;
-    font-family: "Yeseva One", cursive;
-    font-size: 5rem;
-    color: #fff;
-    padding: 0 1rem;
-    align-self: center; }
+    font-weight: 900;
+    margin-left: .2rem; }
 
-.search-nav {
-  display: flex;
-  align-self: stretch;
-  color: #FAF6E6;
-  padding-left: 2rem;
-  flex: 1; }
-  .search-nav__input {
-    font-size: 3rem;
+.category-nav {
+  list-style: none;
+  font-weight: 700;
+  display: flex; }
+  .category-nav__item {
+    margin-top: .5rem; }
+    .category-nav__item:not(:last-child) {
+      margin-right: 2.5rem; }
+  .category-nav__icon {
+    transition: all .2s; }
+  .category-nav__link:link, .category-nav__link:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: inherit;
+    transition: all .2s; }
+  .category-nav__link:hover {
+    color: #fff; }
+  .category-nav__link:hover + .category-nav__icon {
+    color: #fff; }
+
+.search {
+  flex: 0 0 25%;
+  display: flex; }
+  .search__input {
     outline: none;
-    border: 0;
-    background-color: inherit;
-    color: #FAF6E6; }
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    background-color: #757575;
+    color: #424242;
+    width: 100%;
+    height: 4.5rem;
+    padding-left: 1.5rem; }
+    .search__input::-webkit-input-placeholder {
+      font-weight: 700;
+      color: #424242; }
+  .search__button {
+    background-color: #757575;
+    padding: 0 1.5rem 0 .5rem;
+    border: none;
+    border-radius: 0 .4rem .4rem 0;
+    display: flex; }
+    .search__button:hover {
+      cursor: pointer; }
+  .search__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: #424242; }
 
 .user-nav {
-  display: flex; }
-  .user-nav__item {
-    list-style: none;
+  font-weight: 700;
+  display: flex;
+  align-items: center; }
+  .user-nav [class$="-link"] {
     text-transform: uppercase;
-    border-left: 1px solid #807E6F;
-    align-self: stretch;
-    display: flex; }
-  .user-nav__link:link, .user-nav__link:visited {
     text-decoration: none;
-    color: #fff;
-    padding: 3rem;
+    color: inherit;
+    padding: 1rem;
     transition: all .2s; }
-  .user-nav__link:hover, .user-nav__link:active {
-    background-color: rgba(0, 0, 0, 0.5); }
+  .user-nav__login-link {
+    border: 2px solid #9E9E9E;
+    border-radius: .4rem 0 0 .4rem;
+    border-right: none;
+    display: flex;
+    align-items: center; }
+  .user-nav__login-link:hover {
+    color: #fff;
+    border: 2px solid #fff;
+    border-right: none; }
+  .user-nav__login-link:hover + .user-nav__signup-link {
+    border-left: 2px solid #fff; }
+  .user-nav__login-link:hover > .user-nav__icon {
+    color: #fff; }
+  .user-nav__signup-link {
+    border: 2px solid #9E9E9E;
+    border-radius: 0 .4rem .4rem 0;
+    display: flex; }
+  .user-nav__signup-link:hover {
+    color: #fff;
+    border: 2px solid #fff; }
+  .user-nav__icon {
+    font-size: 2.5rem;
+    margin-right: .5rem;
+    transition: all .2s; }
 
 .cakes {
   grid-column: center-start / center-end;
@@ -165,6 +210,9 @@ body {
 .cake {
   background-color: #fff;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  backface-visibility: hidden;
+  transition: all .2s ease;
   display: flex;
   flex-direction: column; }
   .cake__thumbnail {
@@ -198,3 +246,5 @@ body {
   .cake__order:link, .cake__order:visited {
     text-decoration: none;
     color: #393939; }
+  .cake:hover {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
