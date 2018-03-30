@@ -22,6 +22,9 @@ $font-display: 'Yeseva One', cursive;
 
 
 // RESPONSIVE BREAKPOINT
+$bp-largest: 62.5em;    // 1000px
+$bp-large: 50em;        // 800px
+$bp-medium: 34.375em;       // 550px
 
 *,z
 *::before,
@@ -34,6 +37,10 @@ $font-display: 'Yeseva One', cursive;
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 55%;
+    }
 }
 
 body {
@@ -43,10 +50,14 @@ body {
 }
 
 .container {
+    background-color: #eee;    
+    color: $color-primary;
+
     display: grid;
     grid-template-rows: 8rem;
     grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(7, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
 
-    background-color: #eee;    
-    color: $color-primary;  
+    @media only screen and (max-width: $bp-large) {
+        grid-template-rows: min-content;
+    }
 }

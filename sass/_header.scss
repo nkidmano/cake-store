@@ -10,15 +10,21 @@
     font-size: 1.8rem;
     letter-spacing: .1rem;
     padding: 0 2rem;
+
+    @media only screen and (max-width: $bp-large) {
+        flex-wrap: wrap;
+        align-content: space-around;
+        padding-top: 2rem;
+    }
 }
 
 .logo-box {
     color: #EEEEEE;
+    font-size: 2.5rem;    
 
     &__link {
         text-decoration: none;
         color: inherit;
-        font-size: 2.5rem;
     }
 
     &__link strong {
@@ -34,11 +40,26 @@
 
     display: flex;
 
+    @media only screen and (max-width: $bp-medium) {
+        order: 1;
+        margin-top: 1.5rem;
+        width: 100%;
+        justify-content: center;
+    }
+
     &__item {
         margin-top: .5rem;
 
+        @media only screen and (max-width: $bp-largest) {
+            margin-top: 0;
+        }
+
         &:not(:last-child) {
             margin-right: 2.5rem;
+
+            @media only screen and (max-width: $bp-largest) {
+                margin-right: 1rem;
+            }
         }
     }
 
@@ -67,6 +88,12 @@
     flex: 0 0 25%;
 
     display: flex;
+
+    @media only screen and (max-width: $bp-large) {
+        order: 2;
+        flex: 0 0 100%;
+        margin: 1.5rem 0;
+    }
 
     &__input {
         outline: none;
@@ -110,6 +137,10 @@
     font-weight: 700;
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 1.5rem;
+    }
 
     [class$="-link"] {
         text-transform: uppercase;
