@@ -5,51 +5,28 @@
 .heading-1 {
     @extend %heading;
     font-size: 4rem;
-    &--white{ color: $color-white; }
 }
 
 .heading-2 {
     @extend %heading;
-    font-size: 6rem;
+    font-size: 3rem;
     letter-spacing: 2px;
-
-    &--white{ color: $color-white; }
-    &--black{ color: $color-primary; }
-    &--brown{ color: $color-brown-light-2 }
 }
 
 .heading-3 {
     @extend %heading;
     font-size: 2.5rem;
     letter-spacing: 1px;
-
-    &--white{ color: $color-white; }
-    &--black{ color: $color-primary; }
 }
 
 .heading-4 {
-    font-family: $font-secondary;
-    font-weight: bold;
+    @extend %heading;
     font-size: 1.5rem;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    color: $color-brown-dark-1;
 }
 
 .btn {
-    background-color: rgba($color-black, .4);
-    color: $color-white;
-    border: 1px solid rgba($color-white, .8);
-    font-size: 2rem;
-    font-family: $font-display;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 5rem;
-    cursor: pointer;
-    }
-
-.btn-ghost {
-
+    
 }
 
 .mb-sm { margin-bottom: 2rem; }

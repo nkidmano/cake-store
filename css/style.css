@@ -26,50 +26,23 @@ body {
     .container {
       grid-template-rows: min-content; } }
 
-.heading-1, .heading-2, .heading-3 {
+.heading-1, .heading-2, .heading-3, .heading-4 {
   font-family: "Yeseva One", cursive; }
 
 .heading-1 {
   font-size: 4rem; }
-  .heading-1--white {
-    color: #fff; }
 
 .heading-2 {
-  font-size: 6rem;
+  font-size: 3rem;
   letter-spacing: 2px; }
-  .heading-2--white {
-    color: #fff; }
-  .heading-2--black {
-    color: #393939; }
-  .heading-2--brown {
-    color: #F0D6A6; }
 
 .heading-3 {
   font-size: 2.5rem;
   letter-spacing: 1px; }
-  .heading-3--white {
-    color: #fff; }
-  .heading-3--black {
-    color: #393939; }
 
 .heading-4 {
-  font-family: "Times New Roman", Times;
-  font-weight: bold;
   font-size: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #b06b3e; }
-
-.btn {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  font-size: 2rem;
-  font-family: "Yeseva One", cursive;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 5rem;
-  cursor: pointer; }
+  letter-spacing: 1px; }
 
 .mb-sm {
   margin-bottom: 2rem; }
@@ -292,3 +265,36 @@ body {
     color: #393939; }
   .cake__order:hover {
     text-decoration: underline; }
+
+.login {
+  grid-column: center-start / center-end;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-content: center; }
+
+.login-heading {
+  grid-column: 1 / -1;
+  text-align: center; }
+  @media only screen and (max-width: 62.5em) {
+    .login-heading {
+      margin-top: 4rem;
+      margin-bottom: 3rem; } }
+
+.login-form {
+  grid-column: 2 / 3;
+  justify-items: center; }
+  .login-form__group {
+    margin-bottom: 1rem; }
+  .login-form__input {
+    width: 100%;
+    font-family: "Yeseva One", cursive;
+    font-size: 2.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #aaa;
+    color: #424242; }
+
+.btn {
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  padding: .75rem 0; }
