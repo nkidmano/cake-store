@@ -3,7 +3,9 @@
 
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: repeat(2, min-content) 4rem;
     justify-content: center;
+    align-items: center;
 }
 
 .login-heading {
@@ -39,4 +41,10 @@
     width: 100%;
     font-size: 2rem;
     padding: .75rem 0;
+}
+
+.seperate-line {
+    grid-row: 3 / 4;
+    grid-column: 1 / -1;
+    text-align: center;
 }
