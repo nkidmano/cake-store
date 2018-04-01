@@ -3,7 +3,7 @@
 
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: repeat(2, min-content) 4rem;
+    grid-template-rows: repeat(2, min-content) 8rem;
     justify-content: center;
     align-items: center;
 }
@@ -45,6 +45,25 @@
 
 .seperate-line {
     grid-row: 3 / 4;
+    grid-column: 1 / -1;
+    text-align: center;
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: 25rem min-content 25rem;
+    grid-column-gap: 3rem;
+    align-items: center;
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: #aaa;
+    }
+}
+
+.password-heading {
     grid-column: 1 / -1;
     text-align: center;
 }
