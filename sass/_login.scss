@@ -22,6 +22,10 @@
     grid-column: 2 / 3;
     justify-items: center;
 
+    @media only screen and (max-width: $bp-large) {
+        grid-column: 1 / -1;
+    }
+
     &__group {
         margin-bottom: 1rem;
     }
@@ -36,13 +40,6 @@
     }
 }
 
-.btn {
-    display: block;
-    width: 100%;
-    font-size: 2rem;
-    padding: .75rem 0;
-}
-
 .seperate-line {
     grid-row: 3 / 4;
     grid-column: 1 / -1;
@@ -50,9 +47,13 @@
     justify-content: center;
 
     display: grid;
-    grid-template-columns: 25rem min-content 25rem;
+    grid-template-columns: 25rem max-content 25rem;
     grid-column-gap: 3rem;
     align-items: center;
+
+    @media only screen and (max-width: $bp-large) {
+        grid-template-columns: 1fr max-content 1fr;
+    }
 
     &::before,
     &::after {

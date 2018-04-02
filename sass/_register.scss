@@ -1,0 +1,41 @@
+.register {
+    grid-column: center-start / center-end;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: repeat(2, min-content) 8rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-heading {
+    grid-column: 1 / -1;
+    text-align: center;
+
+    @media only screen and (max-width: $bp-largest) {
+        margin-top: 4rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.register-form {
+    grid-column: 2 / 3;
+    justify-items: center;
+
+    @media only screen and (max-width: $bp-large) {
+        grid-column: 1 / -1;
+    }
+
+    &__group {
+        margin-bottom: 1rem;
+    }
+
+    &__input {
+        width: 100%;
+        font-family: $font-display;
+        font-size: 2.25rem;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid #aaa;
+        color: #424242;
+    }
+}
