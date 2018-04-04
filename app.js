@@ -1,5 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const Cake = require("./models/cake");
+// const Comment = require("./models/comment");
+// const User = require("./models/user");
+
+// Init app
+const app = express();
 
 // Connect to db
 mongoose.connect("mongodb://localhost/cake-store");
@@ -9,32 +15,36 @@ db.once('open', function() {
     console.log("Connected to MongoDB");
 });
 
-// Init app
-const app = express();
-
 app.set("view engine", "ejs");
+
+// Cake.create(
+//     {
+//         name: "Creampie bread", 
+//         image: "/test-1.jpg", 
+//         description: "Bread and cummie, simple but delicous and rich af",
+//         price: 2.35
+//     }, function(err, cake){
+//         if(err){
+//             console.log(err)
+//         } else {
+//             console.log("Created cake db");
+//             console.log(cake);
+//         }
+//     }
+// )
 
 // Set folder path
 app.use(express.static(__dirname + "/css"));
 app.use(express.static(__dirname + "/img"));
 
 app.get("/menu", function(req, res){
-    var cakes = [
-        {
-            name: "Honey lasfe bread", 
-            image: "/test-1.jpg", 
-            description: "Baked with honey and sorcery powder, made for diet people.",
-            price: 1.5
-        },
-        {
-            name: "Eltobido cheese bread", 
-            image: "/test-1.jpg", 
-            description: "Delicous german cheesy bread that was made with extra love.",
-            price: 2.5
+    Cake.find({}, function(err, allCakes){
+        if(err){
+            console.log(err)
+        } else {
+            res.render("menu",{cakes:allCakes});
         }
-    ];
-
-    res.render("menu",{cakes:cakes});
+    });
 });
 
 app.get("/login", function(req, res){
@@ -46,7 +56,7 @@ app.get("/register", function(req, res){
 });
 
 app.get("/", function(req, res){
-    res.render("menu");
+    res.redirect("/menu");
 });
 
 app.listen(3000, function(){
