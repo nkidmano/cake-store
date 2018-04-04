@@ -1,7 +1,20 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
+// Connect to db
+mongoose.connect("mongodb://localhost/cake-store");
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log("Connected to MongoDB");
+});
+
+// Init app
 const app = express();
 
 app.set("view engine", "ejs");
+
+// Set folder path
 app.use(express.static(__dirname + "/css"));
 app.use(express.static(__dirname + "/img"));
 
@@ -36,6 +49,6 @@ app.get("/", function(req, res){
     res.render("menu");
 });
 
-app.listen(8080, process.env.IP, function(){
+app.listen(3000, function(){
     console.log("SERVER STARTED");
 });
