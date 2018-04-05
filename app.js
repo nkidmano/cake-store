@@ -1,8 +1,6 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const Cake = require("./models/cake");
-// const Comment = require("./models/comment");
-// const User = require("./models/user");
+const express   = require("express");
+const mongoose  = require("mongoose");
+const Cake      = require("./models/cake");
 
 // Init app
 const app = express();
@@ -34,8 +32,7 @@ app.set("view engine", "ejs");
 // )
 
 // Set folder path
-app.use(express.static(__dirname + "/css"));
-app.use(express.static(__dirname + "/img"));
+app.use(express.static(__dirname + "/public"));
 
 app.get("/menu", function(req, res){
     Cake.find({}, function(err, allCakes){

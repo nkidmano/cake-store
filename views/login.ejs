@@ -1,5 +1,28 @@
 <% include ./partials/header %>
 
-<p>Login page</p>
+    <div class="login">
+        <h1 class="login-heading heading-1 mt-sm mb-sm">Login</h1>
+
+        <form action="#" class="login-form">
+            <div class="login-form__group">
+                <input type="email" class="login-form__input" name="email" placeholder="Email" required>
+            </div>
+            <div class="login-form__group">
+                <input type="password" class="login-form__input" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Log In</button>
+        </form>
+
+        <div class="seperate-line">OR</div>
+
+        <h3 class="password-heading heading-3 mb-sm ">Forgot Password</h3>
+
+        <form action="#" class="login-form">
+            <div class="login-form__group">
+                <input type="text" class="login-form__input" name="email" placeholder="Email" required>
+            </div>
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </div>
 
 <% include ./partials/footer %>
