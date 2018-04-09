@@ -1,3 +1,4 @@
+// Requiring packages
 const express       = require("express");
 const mongoose      = require("mongoose");
 const Joi           = require("joi");
@@ -5,8 +6,12 @@ const bodyParser    = require("body-parser");
 const passport      = require("passport");
 const LocalStrategy = require("passport-local");
 const session       = require("express-session");
-const Cake          = require("./models/cake");
 const User          = require("./models/user");
+
+// Requiring routes
+const cakesRoutes       = require("./routes/cakes");
+const registerRoutes    = require("./routes/register");
+const loginRoutes       = require("./routes/login");
 
 // Init app
 const app = express();
@@ -35,15 +40,12 @@ db.once('open', function() {
     console.log("Connected to MongoDB");
 });
 
-
-
-
 // Cake.create(
 //     {
-//         name: "Creampie bread", 
-//         image: "/test-1.jpg", 
-//         description: "Bread and cummie, simple but delicous and rich af",
-//         price: 2.35
+//         name: "Bread with milk breast", 
+//         image: "./images/test-1.jpg", 
+//         description: "Rich delicious milk breast on top of solf and cheesy bread",
+//         price: 5.35
 //     }, (err, cake) => {
 //         if(err){
 //             console.log(err)
@@ -54,63 +56,9 @@ db.once('open', function() {
 //     }
 // )
 
-app.get("/menu", (req, res) => {
-    Cake.find({}, (err, allCakes) => {
-        if(err){
-            res.status(404).send("Website are downed");
-            console.log(err)
-        } else {
-            res.render("menu", {cakes:allCakes});
-        }
-    });
-});
-
-// app.get("/menu/:_id", (req, res) => {
-//     Cake.find(c => c.id === parseInt(req.params.id), (err, cake) => {
-//         if(err) {
-//             res.status(404).send("Cannot find the cake with the given ID");
-//         } else {
-//             res.render()
-//         }
-//     });
-// });
-
-app.get("/login", (req, res) => {
-    res.render("login");
-});
-
-app.get("/register", (req, res) => {
-    res.render("register");
-});
-
-app.post("/register", (req, res) => {
-    const schema = {
-        name: Joi.string().required(),
-        email: Joi.string().required(),
-        password: Joi.string().min(6).required()
-    };
-
-    const validateResult = Joi.validate(req.body, schema);
-    if(validateResult.error) {
-        res.status(400).send(validateResult.error);
-        return;
-    }
-
-    const newUser = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    };
-
-    User.create(newUser, (err, user) => {
-        if(err){
-            console.log(err)
-        } else {
-            console.log(user);
-            res.redirect("/menu");
-        }
-    });
-});
+app.use("/register", registerRoutes);
+app.use("/login", loginRoutes);
+app.use("/menu", cakesRoutes);
 
 app.get("/", (req, res) => {
     res.redirect("/menu");

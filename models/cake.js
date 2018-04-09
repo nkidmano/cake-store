@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var cakeSchema = new mongoose.Schema({
+let cakeSchema = new mongoose.Schema({
     name: String,
     image: String,
     description: String,
