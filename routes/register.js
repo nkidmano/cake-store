@@ -13,14 +13,16 @@ router.post("/", (req, res) => {
     const validateSchema = {
         name: Joi.string().required(),
         email: Joi.string().required(),
-        password: Joi.string().min(6).required()
+        password: Joi.string().min(6).required(),
+        passwordCheck: Joi.string().equal(req.body.password).required()
     };
 
     const validateResult = Joi.validate(req.body, validateSchema);
     if(validateResult.error) {
-        res.status(400).send(validateResult.error);
+        res.status(400).send(validateResult.error.message);
         return;
     }
+
 
     const newUser = {
         name: req.body.name,
@@ -33,7 +35,7 @@ router.post("/", (req, res) => {
             console.log(err)
         } else {
             console.log(user);
-            res.redirect("/menu");
+            res.redirect("/cakes");
         }
     });
 });

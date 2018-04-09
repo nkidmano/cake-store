@@ -1,10 +1,23 @@
 const mongoose = require("mongoose");
 
-let cakeSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String,
-    price: Number
+// Cake Schema
+const CakeSchema = new mongoose.Schema({
+    name: {
+        type: String, 
+        required: true 
+    },
+    image: {
+        type: String,
+        required: true 
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    }
 });
 
-module.exports = mongoose.model("Cake", cakeSchema);
+module.exports = mongoose.model("Cake", CakeSchema);
