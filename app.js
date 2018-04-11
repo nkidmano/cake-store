@@ -1,6 +1,7 @@
 // Requiring packages
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const session = require('express-session');
 const passport = require('passport');
 const Joi = require('joi');
@@ -11,8 +12,13 @@ const app = express();
 // View engine setup
 app.set('view engine', 'ejs');
 
-// Set public directory
-app.use(express.static(__dirname + '/public'));
+// Set static public folder
+app.use(express.static('public'));
+
+// Express middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(helmet());
 
 // Express Session middleware
 app.use(session({
@@ -22,9 +28,7 @@ app.use(session({
     cookie: { secure: true }
 }));
 
-// Express body-parser middleware
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+
 
 // Connect to db
 mongoose.connect('mongodb://localhost/cake-store');

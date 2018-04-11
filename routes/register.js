@@ -10,19 +10,8 @@ router.get('/', (req, res) => {
 
 // POST: Register logic
 router.post('/', (req, res) => {
-    const validateSchema = {
-        name: Joi.string().required(),
-        email: Joi.string().email().required(),
-        password: Joi.string().min(6).required(),
-        passwordCheck: Joi.string().equal(req.body.password).required()
-    };
-
-    const validateResult = Joi.validate(req.body, validateSchema);
-    if(validateResult.error) {
-        res.status(400).send(validateResult.error.message);
-        return;
-    }
-
+    const { error } = validateRegister(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
 
     const newUser = {
         name: req.body.name,
@@ -39,5 +28,16 @@ router.post('/', (req, res) => {
         }
     });
 });
+
+function validateRegister(register) {
+    const validateRegister = {
+        name: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().min(6).required(),
+        passwordCheck: Joi.string().equal(register.password).required()
+    };
+
+    return Joi.validate(register, validateRegister);
+}
 
 module.exports = router;

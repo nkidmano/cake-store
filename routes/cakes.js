@@ -16,8 +16,7 @@ router.get('/', (req, res) => {
 
 // router.get('/menu/:_id', (req, res) => {
 //     Cake.find(c => c.id === parseInt(req.params.id), (err, cake) => {
-//         if(err) {
-//             res.status(404).send('Cannot find the cake with the given ID');
+//         if(err) return res.status(404).send('Cannot find the cake with the given ID');
 //         } else {
 //             res.render()
 //         }
