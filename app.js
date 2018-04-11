@@ -1,8 +1,10 @@
 // Requiring packages
-const express       = require("express");
-const mongoose      = require("mongoose");
-const session       = require('express-session');
-const Joi           = require("joi");
+const express = require("express");
+const mongoose = require("mongoose");
+const session = require('express-session');
+const passport = require('passport');
+const Joi = require("joi");
+const User = require("./models/user");
 
 // Init app
 const app = express();

@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     const validateSchema = {
         name: Joi.string().required(),
-        email: Joi.string().required(),
+        email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
         passwordCheck: Joi.string().equal(req.body.password).required()
     };
