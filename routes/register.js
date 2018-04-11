@@ -1,15 +1,15 @@
-const express   = require("express");
-const Joi       = require("joi");
-const User      = require("../models/user");
+const express   = require('express');
+const Joi       = require('joi');
+const User      = require('../models/user');
 const router    = express.Router();
 
 // GET: Register page
-router.get("/", (req, res) => {
-    res.render("register");
+router.get('/', (req, res) => {
+    res.render('register');
 });
 
 // POST: Register logic
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
     const validateSchema = {
         name: Joi.string().required(),
         email: Joi.string().email().required(),
@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
             console.log(err)
         } else {
             console.log(user);
-            res.redirect("/cakes");
+            res.redirect('/cakes');
         }
     });
 });

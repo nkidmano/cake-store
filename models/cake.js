@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 // Cake Schema
 const CakeSchema = new mongoose.Schema({
@@ -17,7 +17,11 @@ const CakeSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true
+    },
+    category: {
+        type: String,
+        required: true
     }
 });
 
-module.exports = mongoose.model("Cake", CakeSchema);
+module.exports = mongoose.model('Cake', CakeSchema);

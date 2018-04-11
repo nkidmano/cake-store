@@ -1,19 +1,18 @@
 // Requiring packages
-const express = require("express");
-const mongoose = require("mongoose");
+const express = require('express');
+const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
-const Joi = require("joi");
-const User = require("./models/user");
+const Joi = require('joi');
 
 // Init app
 const app = express();
 
 // View engine setup
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 // Set public directory
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + '/public'));
 
 // Express Session middleware
 app.use(session({
@@ -28,28 +27,28 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // Connect to db
-mongoose.connect("mongodb://localhost/cake-store");
+mongoose.connect('mongodb://localhost/cake-store');
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log("Connected to MongoDB");
+    console.log('Connected to MongoDB');
 });
 
 // Seed db
 // seedDB();
 
 // Requiring routes
-const cakesRoutes       = require("./routes/cakes");
-const registerRoutes    = require("./routes/register");
-const loginRoutes       = require("./routes/login");
+const cakesRoutes       = require('./routes/cakes');
+const registerRoutes    = require('./routes/register');
+const loginRoutes       = require('./routes/login');
 
 // Set routes
-app.use("/register", registerRoutes);
-app.use("/login", loginRoutes);
-app.use("/cakes", cakesRoutes);
+app.use('/register', registerRoutes);
+app.use('/login', loginRoutes);
+app.use('/cakes', cakesRoutes);
 
-app.get("/", (req, res) => {
-    res.redirect("/cakes");
+app.get('/', (req, res) => {
+    res.redirect('/cakes');
 });
 
 // Start the server
