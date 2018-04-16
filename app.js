@@ -17,34 +17,34 @@ app.use(express.static('public'));
 
 // Express middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 
 // Express Session middleware
-app.use(session({
+app.use(
+  session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true }
-}));
-
-
+  })
+);
 
 // Connect to db
 mongoose.connect('mongodb://localhost/cake-store');
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log('Connected to MongoDB');
+  console.log('Connected to MongoDB');
 });
 
 // Seed db
 // seedDB();
 
 // Requiring routes
-const cakesRoutes       = require('./routes/cakes');
-const registerRoutes    = require('./routes/register');
-const loginRoutes       = require('./routes/login');
+const cakesRoutes = require('./routes/cakes');
+const registerRoutes = require('./routes/register');
+const loginRoutes = require('./routes/login');
 
 // Set routes
 app.use('/register', registerRoutes);
@@ -52,7 +52,7 @@ app.use('/login', loginRoutes);
 app.use('/cakes', cakesRoutes);
 
 app.get('/', (req, res) => {
-    res.redirect('/cakes');
+  res.redirect('/cakes');
 });
 
 // Start the server

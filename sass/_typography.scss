@@ -1,43 +1,59 @@
 %heading {
-    font-family: $font-display;
+  font-family: $font-display;
 }
 
 .heading-1 {
-    @extend %heading;
-    font-size: 4rem;
+  @extend %heading;
+  font-size: 4rem;
 }
 
 .heading-2 {
-    @extend %heading;
-    font-size: 3rem;
-    letter-spacing: 2px;
+  @extend %heading;
+  font-size: 3rem;
+  letter-spacing: 2px;
 }
 
 .heading-3 {
-    @extend %heading;
-    font-size: 2.5rem;
-    letter-spacing: 1px;
+  @extend %heading;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
 }
 
 .heading-4 {
-    @extend %heading;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
+  @extend %heading;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
 
 .btn {
-    display: block;
-    width: 100%;
-    font-size: 2rem;
-    padding: .75rem 0;
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  padding: 0.75rem 0;
 }
 
-.mb-sm { margin-bottom: 2rem; }
-.mb-md { margin-bottom: 3rem; }
-.mb-lg { margin-bottom: 4rem; }
-.mb-hg { margin-bottom: 6rem; }
+.mb-sm {
+  margin-bottom: 2rem;
+}
+.mb-md {
+  margin-bottom: 3rem;
+}
+.mb-lg {
+  margin-bottom: 4rem;
+}
+.mb-hg {
+  margin-bottom: 6rem;
+}
 
-.mt-sm { margin-top: 2rem; }
-.mt-md { margin-top: 3rem; }
-.mt-lg { margin-top: 4rem; }
-.mt-hg { margin-top: 6rem; }
+.mt-sm {
+  margin-top: 2rem;
+}
+.mt-md {
+  margin-top: 3rem;
+}
+.mt-lg {
+  margin-top: 4rem;
+}
+.mt-hg {
+  margin-top: 6rem;
+}

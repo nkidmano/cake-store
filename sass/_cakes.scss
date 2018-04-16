@@ -1,101 +1,103 @@
 //background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
 .cakes {
-    grid-column: center-start / center-end;
+  grid-column: center-start / center-end;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
-    grid-gap: 2rem 3rem;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 2rem 3rem;
 }
 
 .cake-heading {
-    grid-column: 1 / -1;
-    text-align: center;
+  grid-column: 1 / -1;
+  text-align: center;
 
-    @media only screen and (max-width: $bp-largest) {
-        margin-top: 4rem;
-        margin-bottom: 3rem;
-    }
+  @media only screen and (max-width: $bp-largest) {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
 }
 
 .cake {
-    background-color: $color-white;
-    box-shadow: 0 .25rem .5rem rgba($color-black, .2);
+  background-color: $color-white;
+  box-shadow: 0 0.25rem 0.5rem rgba($color-black, 0.2);
+  position: relative;
+  backface-visibility: hidden;
+  transition: all 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover {
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  }
+
+  &__thumbnail {
     position: relative;
-    backface-visibility: hidden;
-    transition: all .2s ease;
-    
+  }
+
+  &__thumbnail::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background: linear-gradient(
+      to right,
+      rgba(#40e0d0, 0.25),
+      rgba(#ff8c00, 0.3),
+      rgba(#ff0080, 0.2)
+    );
+  }
+
+  &__photo {
+    width: 100%;
+    display: block;
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem 1rem 0 1rem;
+    color: coral;
+
+    &--link {
+      text-decoration: none;
+      color: coral;
+    }
+
+    &--link:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__description {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    margin: auto 0;
+  }
+
+  &__info {
+    font-size: 1.45rem;
+    font-weight: 700;
+    padding: 1.25rem 1rem;
+
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    
-    &:hover {
-        box-shadow: 0 1rem 2rem rgba($color-black, .2);
-    }
+  }
 
-    &__thumbnail {
-        position: relative
-    }
+  &__order:link,
+  &__order:visited {
+    text-decoration: none;
+    color: $color-primary;
+  }
 
-    &__thumbnail::before {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        right: 0;
-        background: linear-gradient(to right, rgba(#40e0d0, .25), rgba(#ff8c00, .3), rgba(#ff0080, .2));
-    }
-    
-    &__photo {
-        width: 100%;
-        display: block;
-    }
+  &__order:hover {
+    text-decoration: underline;
+  }
 
-    &__name {
-        font-size: 2rem;
-        font-weight: 700;
-        padding: 1rem 1rem 0 1rem;
-        color: coral;
-        
-        &--link {
-            text-decoration: none;
-            color: coral;    
-        }
-
-        &--link:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &__description {
-        font-size: 1.25rem;
-        padding: .5rem 1rem;
-        margin: auto 0;
-    }
-
-    &__info {
-        font-size: 1.45rem;
-        font-weight: 700;
-        padding: 1.25rem 1rem;
-        
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__order:link,
-    &__order:visited {
-        text-decoration: none;
-        color: $color-primary;
-    }
-
-    &__order:hover {
-        text-decoration: underline;
-    }
-
-    &__price {
-
-    }
+  &__price {
+  }
 }
-
