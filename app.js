@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const config = require('config');
 const Joi = require('joi');
 const cakes = require('./routes/cakes');
@@ -17,6 +18,7 @@ mongoose.connect('mongodb://localhost/cake-store')
   .catch(err => console.error('Failed to connect to MongoDB...', err));
 
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
