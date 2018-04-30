@@ -1,17 +1,11 @@
+const { Cake, validate } = require('../models/cake');
+const mongoose = require('mongoose');
 const express = require('express');
-const Cake = require('../models/cake');
 const router = express.Router();
 
-// GET: INDEX - All cakes page
-router.get('/', (req, res) => {
-  Cake.find({}, (err, allCakes) => {
-    if (err) {
-      res.status(404).send('Website are downed');
-      console.log(err);
-    } else {
-      res.render('cakes/index', { cakes: allCakes });
-    }
-  });
+router.get('/', async (req, res) => {
+  const cakes = await Cake.find().sort('name');
+  res.render('cakes/index', { cakes: cakes });
 });
 
 module.exports = router;

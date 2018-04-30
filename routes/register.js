@@ -1,49 +1,27 @@
+const { User, validate } = require('../models/user');
+const mongoose = require('mongoose');
 const express = require('express');
-const Joi = require('joi');
-const User = require('../models/user');
+const bcrypt = require('bcrypt');
+const _ = require('lodash');
 const router = express.Router();
 
-// GET: Register page
 router.get('/', (req, res) => {
-  res.render('register');
+  res.render('users/register');
 });
 
-// POST: Register logic
-router.post('/', (req, res) => {
-  const { error } = validateRegister(req.body);
+router.post('/', async (req, res) => {
+  const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const newUser = {
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  };
+  let user = await User.findOne({ email: req.body.email });
+  if (user) return res.status(400).send('User already registered.');
 
-  User.create(newUser, (err, user) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(user);
-      res.redirect('/cakes');
-    }
-  });
+  user = new User(_.pick(req.body, ['name', 'email', 'password']));
+  const salt = await bcrypt.genSalt(10);
+  user.password = await bcrypt.hash(user.password, salt);
+  await user.save();
+
+  res.redirect('/cakes');
 });
-
-function validateRegister(register) {
-  const validateRegister = {
-    name: Joi.string().required(),
-    email: Joi.string()
-      .email()
-      .required(),
-    password: Joi.string()
-      .min(6)
-      .required(),
-    passwordCheck: Joi.string()
-      .equal(register.password)
-      .required()
-  };
-
-  return Joi.validate(register, validateRegister);
-}
 
 module.exports = router;
