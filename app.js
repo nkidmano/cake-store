@@ -5,8 +5,7 @@ const config = require('config');
 const Joi = require('joi');
 const passport = require('passport');
 const cakes = require('./routes/cakes');
-const register = require('./routes/register');
-const login = require('./routes/login');
+const users = require('./routes/users');
 const app = express();
 
 if (!config.get('jwtPrivateKey')) {
@@ -18,18 +17,13 @@ mongoose.connect('mongodb://localhost/cake-store')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Failed to connect to MongoDB...', err));
 
-require('./config/passport')(passport);
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/cakes', cakes);
-app.use('/register', register);
-app.use('/login', login);
+app.use('/users', users);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server started on port ${port}`));

@@ -30,13 +30,9 @@
     "joi": "^13.1.2",
     "jsonwebtoken": "^8.2.1",
     "lodash": "^4.17.10",
-<<<<<<< HEAD
     "method-override": "^2.3.10",
-    "mongoose": "^5.0.12"
-=======
     "mongoose": "^5.0.12",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
->>>>>>> 9b5f6b974ffccbfdf51c155f72f8194b31745831
   }
 }
