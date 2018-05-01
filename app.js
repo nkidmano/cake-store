@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const config = require('config');
 const Joi = require('joi');
+const passport = require('passport');
 const cakes = require('./routes/cakes');
 const register = require('./routes/register');
 const login = require('./routes/login');
@@ -16,6 +17,10 @@ if (!config.get('jwtPrivateKey')) {
 mongoose.connect('mongodb://localhost/cake-store')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Failed to connect to MongoDB...', err));
+
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
