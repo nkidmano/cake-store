@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Comment } = require('./comment'); 
 const Joi = require('joi');
 
 const cakeSchema = new mongoose.Schema({
@@ -23,7 +24,13 @@ const cakeSchema = new mongoose.Schema({
       required: true,
       min: 1,
       max: 50
-    }
+    },
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+      }
+    ]
 });
 
 const Cake = mongoose.model('Cake', cakeSchema);
@@ -34,7 +41,7 @@ function validateCake(cake) {
     image: Joi.string().required(),
     description: Joi.string().min(5).max(255).required(),
     price: Joi.number().min(1).max(50).required()
-  }
+  };
 
   return Joi.validate(cake, schema);
 }
