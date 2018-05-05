@@ -15,7 +15,7 @@ router.get('/register', (req, res) => {
 
 router.get('/login', (req, res) => {
   res.render('users/login', {
-    title: 'Login'
+    title: 'Login' 
   });
 });
 
@@ -32,7 +32,8 @@ router.post('/register', async (req, res) => {
   await user.save();
 
   const token = user.generateAuthToken();
-  res.header('x-auth-token', token).redirect('/cakes');
+  // res.header('x-auth-token', token).redirect('/cakes');
+  // res.json({ 'x-auth-token': token }).redirect('/cakes');
 });
 
 router.post('/login', async (req, res) => {
@@ -45,8 +46,10 @@ router.post('/login', async (req, res) => {
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) return res.status(400).send('Invalid email or password.');
 
-  // const token = user.generateAuthToken();
-  // res.header('x-auth-token', token);
+  const token = user.generateAuthToken();
+  // res.header('x-auth-token', token).redirect('/cakes');
+  // res.json({ 'x-auth-token': token }).redirect('/cakes');
+  res.redirect('/cakes');
 });
 
 module.exports = router;
