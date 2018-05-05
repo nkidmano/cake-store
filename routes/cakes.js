@@ -6,7 +6,10 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   const cakes = await Cake.find().sort('name');
-  res.render('cakes/index', { cakes: cakes });
+  res.render('cakes/index', { 
+    title: 'Menu',
+    cakes: cakes
+  });
 });
 
 router.post('/', async (req, res) => {
@@ -37,7 +40,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const cake = await Cake.findByIdAndRemove(req.params.id);
 
-  if (!cake) res.status(404).send('The cake with the given ID was not found.');
+  if (!cake) return res.status(404).send('The cake with the given ID was not found.');
 
   res.redirect('/cakes');;
 });

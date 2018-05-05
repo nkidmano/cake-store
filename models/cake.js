@@ -1,36 +1,31 @@
 const mongoose = require('mongoose');
-const { Comment } = require('./comment'); 
+const { reviewSchema } = require('./review'); 
 const Joi = require('joi');
 
 const cakeSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-      minlength: 5,
-      maxlength: 50
-    },
-    image: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true,
-      minlength: 5,
-      maxlength: 255
-    },
-    price: {
-      type: Number,
-      required: true,
-      min: 1,
-      max: 50
-    },
-    comments: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-      }
-    ]
+  name: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 50
+  },
+  image: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 255
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 50
+  },
+  reviews: [reviewSchema]
 });
 
 const Cake = mongoose.model('Cake', cakeSchema);

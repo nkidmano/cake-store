@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+
+  <div class="reviews mb-lg">
+    <h1 class="review-heading heading-1 mt-sm">Customer Reviews</h1>
+
+    <div class="review-create">
+      <form action="/cakes/<%= cake._id %>/reviews" method="POST" class="review-create__form">
+        <textarea class="review-create__input" maxlength="8000" placeholder="Write a review for this product" name="review"></textarea>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+
+    <% cake.reviews.forEach(function(review){ %>
+    <div class="review">
+      <div class="review__author">
+        Johnny
+      </div>
+      <div class="review__comment">
+        <%= review.review %>
+      </div>
+    </div>
+    <% }); %>
+
+  </div>
+
+<% include ../partials/footer %>
