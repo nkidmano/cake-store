@@ -27,15 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
-app.use(function(req, res, next) {
-  res.locals.currentUser = req.user;
-  next();
-});
-
-// Set routes
-app.use('/cakes', cakes);
-app.use('/users', users);
-app.use('/cakes/:id/reviews', reviews);
 
 // Passport setup
 app.use(passport.initialize());
@@ -51,6 +42,16 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next){
+  res.locals.user = req.user;
+  next();
+});
+
+// Set routes
+app.use('/cakes', cakes);
+app.use('/users', users);
+app.use('/cakes/:id/reviews', reviews);
 
 // Start the server
 const port = process.env.PORT || 3000;
