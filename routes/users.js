@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
   const user = await User.findOne({ username: req.body.username });
   if (user) return res.status(400).send('User already registered.');
 
-  User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+  User.register(new User(_.pick(req.body, ['username', 'email'])), req.body.password, function(err, user) {
     if (err) {
       console.log(err);
       return res.redirect('/users/register');
@@ -36,13 +36,13 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/secret',
+  successRedirect: '/cakes',
   failureRedirect: '/users/login'
   }) ,(req, res) => {
 });
 
-router.get('/logout', (req, res) => {
-  req.logout();
+router.get('/logout', async (req, res) => {
+  await req.logout();
   res.redirect('/cakes');
 });
 

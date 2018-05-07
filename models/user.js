@@ -6,23 +6,20 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 50,
     trim: true
   },
   email: {
     type: String,
     unique: true,
-    minlength: 5,
-    maxlength: 255,
     trim: true
   },
   password: {
-    type: String,
-    minlength: 5,
-    maxlength: 1024
+    type: String
   },
-  isAdmin: Boolean
+  isAdmin: { 
+    type: Boolean,
+    default: false
+  }
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -31,9 +28,9 @@ const User = mongoose.model('User', userSchema);
 
 function validateRegister(user) {
   const schema = {
-    username: Joi.string().min(2).max(50).required(),
-    email: Joi.string().min(5).max(255).required().email(),
-    password: Joi.string().min(5).max(255).required(),
+    username: Joi.string().min(3).max(50).required(),
+    email: Joi.string().min(10).max(255).required().email(),
+    password: Joi.string().min(6).max(24).required(),
     passwordCheck: Joi.string().equal(user.password).required()
   }
 
@@ -42,8 +39,8 @@ function validateRegister(user) {
 
 function validateLogin(req) {
   const schema = {
-    username: Joi.string().min(2).max(50).required(),
-    password: Joi.string().min(5).max(255).required()
+    username: Joi.string().min(3).max(50).required(),
+    password: Joi.string().min(6).max(24).required()
   }
 
   return Joi.validate(req, schema);

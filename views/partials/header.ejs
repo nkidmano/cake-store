@@ -44,7 +44,10 @@
           <span class="user-nav_signup-text">sign up</span>
         </a>
       <% } else { %>
-        <a href="/users/register" class="user-nav__signup-link">
+        <a href="/users/profile" class="user-nav__login-link">
+          <span class="user-nav__login-text"><%= user.username %></span>
+        </a>
+        <a href="/users/logout" class="user-nav__signup-link">
           <span class="user-nav_signup-text">logout</span>
         </a>
       <% } %>
