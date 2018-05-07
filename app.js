@@ -1,8 +1,12 @@
 // Require packages
 const express = require('express');
 const mongoose = require('mongoose');
-const config = require('config');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
 const methodOverride = require('method-override');
+const { User } = require('./models/user');
 
 // Require routes
 const cakes = require('./routes/cakes');
@@ -12,12 +16,6 @@ const reviews = require('./routes/reviews');
 // Init app
 const app = express();
 
-// Check private key
-if (!config.get('jwtPrivateKey')) {
-  console.error('FATAL ERROR: jwtPrivateKey is not define.');
-  process.exit(1);
-}
-
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost/cake-store')
   .then(() => console.log('Connected to MongoDB...'))
@@ -25,15 +23,34 @@ mongoose.connect('mongodb://localhost/cake-store')
 
 // Set middlewares
 app.set('view engine', 'ejs');
-app.use(methodOverride('_method'));
-app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+app.use(express.static('public'));
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // Set routes
 app.use('/cakes', cakes);
 app.use('/users', users);
 app.use('/cakes/:id/reviews', reviews);
+
+// Passport setup
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(session({
+  secret: 'nodejs',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Start the server
 const port = process.env.PORT || 3000;

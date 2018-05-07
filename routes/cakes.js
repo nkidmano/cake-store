@@ -2,7 +2,6 @@ const { Cake, validate } = require('../models/cake');
 const mongoose = require('mongoose');
 const express = require('express');
 const _ = require('lodash');
-const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -38,7 +37,7 @@ router.put('/:id', async (req, res) => {
   res.send(cake);
 });
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const cake = await Cake.findByIdAndRemove(req.params.id);
 
   if (!cake) return res.status(404).send('The cake with the given ID was not found.');

@@ -35,12 +35,18 @@
       <input type="text" class="search__input" placeholder="Search">
     </form>
     <div class="user-nav">
-      <a href="/users/login" class="user-nav__login-link">
-        <i class="user-nav__icon fas fa-user-circle"></i>
-        <span class="user-nav__login-text">login</span>
-      </a>
-      <a href="/users/register" class="user-nav__signup-link">
-        <span class="user-nav_signup-text">sign up</span>
-      </a>
+      <% if (!currentUser) { %>
+        <a href="/users/login" class="user-nav__login-link">
+          <i class="user-nav__icon fas fa-user-circle"></i>
+          <span class="user-nav__login-text">login</span>
+        </a>
+        <a href="/users/register" class="user-nav__signup-link">
+          <span class="user-nav_signup-text">sign up</span>
+        </a>
+      <% } else { %>
+        <a href="/users/register" class="user-nav__signup-link">
+          <span class="user-nav_signup-text">logout</span>
+        </a>
+      <% } %>
     </div>
   </nav>
