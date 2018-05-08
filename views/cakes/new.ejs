@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+  <div class="add">
+    <h1 class="add-heading heading-1 mt-sm mb-sm">Add Cake</h1>
+
+    <form action="/cakes/new" method="POST" class="add-form">
+      <div class="add-form__group">
+        <input type="text" class="add-form__input" name="name" placeholder="Cake's name" required>
+      </div>
+      <div class="add-form__group">
+        <input type="number" class="add-form__input" name="price" placeholder="Price" value="1" required>
+      </div>
+      <div class="add-form__group">
+        <input type="file" class="add-form__input" name="image" placeholder="Photo" required accept="image/*">
+      </div>
+      <div class="add-form__group">
+        <textarea class="add-form__textarea" name="description" placeholder="Description"></textarea>
+      </div>
+      <button type="submit" class="btn">Save</button>
+    </form>
+  </div>
+
+<% include ../partials/footer %>
