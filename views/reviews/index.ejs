@@ -13,11 +13,14 @@
     <% cake.reviews.forEach(function(review){ %>
     <div class="review">
       <div class="review__author">
-        Johnny
+        <%= review.author.username %>
       </div>
       <div class="review__comment">
         <%= review.review %>
       </div>
+      <form action="/cakes/<%= cake._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+      </form>
     </div>
     <% }); %>
 
