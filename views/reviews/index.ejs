@@ -18,6 +18,9 @@
       <div class="review__comment">
         <%= review.review %>
       </div>
+      <form action="/cakes/<%= cake._id %>/reviews/<%= review._id %>?_method=PUT" method="POST">
+        <button>Edit</button>
+      </form>
       <form action="/cakes/<%= cake._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
         <button>Delete</button>
       </form>

@@ -34,15 +34,18 @@ router.post('/', async (req, res) => {
   res.redirect(`/cakes/${cake._id}/reviews`);
 });
 
-// router.put('/edit', async (req, res) => {
-//   const { error } = validate(req.body)
-//   if (error) return res.status(400).send(error.details[0].message);
+router.put('/:review_id/edit', async (req, res) => {
+  const { error } = validate(req.body)
+  if (error) return res.status(400).send(error.details[0].message);
 
-//   const cake = await Cake.findById(req.params.id);
-//   if (!cake) return res.status(404).send('The cake with the given ID was not found.');
+  const cake = await Cake.update({ 'reviews._id' : req.params.review_id }, {
+    $set: {
+      'reviews.$.review': req.body.review
+    }
+  });
 
-//   const review = new Review(_.pick(req.body, 'review'));
-// });
+  res.redirect(`/cakes/${cake._id}/reviews`);
+});
 
 router.delete('/:review_id', async (req, res) => {
   const cake = await Cake.findById(req.params.id);

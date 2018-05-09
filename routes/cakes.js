@@ -50,13 +50,13 @@ router.put('/:id', async (req, res) => {
     'description', 
     'price'
   ]));
+  if (!cake) return res.status(404).send('The cake with given ID was not found.');
 
   const path = './images/'; // hard code path for image
   cake.image = `${path}${req.body.image}`; // redefine image path, html can't get accurate path
   
   await cake.save();
 
-  if (!cake) return res.status(404).send('The cake with given ID was not found.');
 
   res.redirect('/cakes');
 });
