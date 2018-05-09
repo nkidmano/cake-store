@@ -20,10 +20,14 @@
                 <a href="#" class="cake__order">Order now</a>
                 <span class="cake__price">$<%= cake.price %></span>   
             </div>
-            <form action="/cakes/<%= cake._id %>?_method=DELETE" method="POST">
-              <button>Delete</button>
-            </form>
-            <a href="/cakes/<%= cake._id %>/edit">EDIT</a>
+            <%  if (user) { %>
+              <% if (user.isAdmin) { %>
+                <form action="/cakes/<%= cake._id %>?_method=DELETE" method="POST">
+                  <button>Delete</button>
+                </form>
+                <a href="/cakes/<%= cake._id %>/edit">EDIT</a>
+                  <% } %>
+            <% } %>
         </div>
         
         <% }); %>

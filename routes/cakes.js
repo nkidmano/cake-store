@@ -69,12 +69,4 @@ router.delete('/:id', async (req, res) => {
   res.redirect('/cakes');;
 });
 
-router.get('/:id', async (req, res) => {
-  const cake = await Cake.findById(req.params.id);
-
-  if (!cake) return res.status(404).send('The cake with the given ID was not found.');
-
-  res.send(cake);
-});
-
 module.exports = router;
