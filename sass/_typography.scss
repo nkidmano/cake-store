@@ -33,6 +33,23 @@
   padding: 0.75rem 0;
 }
 
+.btn-review {
+  font-size: 1.5rem;
+  background: none;
+  border: solid 1px black;
+  cursor: pointer;
+  padding: .25rem 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.btn-review--link:link,
+.btn-review--link:visited {
+  text-decoration: none;
+  border: solid 1px black;
+  padding: .34rem .75rem;
+  color: black;
+}
+
 .mb-sm {
   margin-bottom: 2rem;
 }
@@ -57,4 +74,8 @@
 }
 .mt-hg {
   margin-top: 6rem;
+}
+
+.hidden {
+  display: none;
 }

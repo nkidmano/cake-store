@@ -14,16 +14,28 @@
     <div class="review">
       <div class="review__author">
         <%= review.author.username %>
+        <% if (user && review.author.id.equals(user._id)) { %>
+          <div>
+            <a href="#" class="btn-review--link js--edit-btn">Edit</a>
+          </div>
+        <% } %>
+        <form action="/cakes/<%= cake._id %>/reviews/<%= review._id %>?_method=DELETE" class="hidden js--review-delete" method="POST">
+          <button type="submit" class="btn-review">Delete</button>
+        </form>
       </div>
-      <div class="review__comment">
+      <div class="review__comment js--review__comment">
         <%= review.review %>
       </div>
-      <form action="/cakes/<%= cake._id %>/reviews/<%= review._id %>?_method=PUT" method="POST">
-        <button>Edit</button>
-      </form>
-      <form action="/cakes/<%= cake._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-        <button>Delete</button>
-      </form>
+      <div class="review-create hidden mt-sm js--review-create">
+        <form action="/cakes/<%= cake._id %>/reviews/<%= review._id %>/edit?_method=PUT" method="POST" class="review-create__form">
+          <textarea class="review-create__input" maxlength="8000" name="review"><%= review.review %></textarea>
+          <div class="review-create__button-box">
+            <button type="submit" class="btn-review">Save</button>
+            <a href="#" class="btn-review--link js--cancel-btn">Cancel</a>
+          </div>
+        </form>
+      </div>
+
     </div>
     <% }); %>
 

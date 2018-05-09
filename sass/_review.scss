@@ -32,6 +32,13 @@
     height: 20rem;
     padding: 1rem;
   }
+
+  &__button-box {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: .75rem
+  }
 }
 
 .review {
@@ -39,12 +46,16 @@
   background-color: $color-white;
   color: $color-black;
   font-size: 1.5rem;
-  padding: 2rem;
+  padding: 2rem 2rem 1.25rem 2rem;
   margin-top: 1rem;
   box-shadow: 0rem 0rem 1.25rem rgba(0,0,0, .35);
   
 
   &__author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
     border-bottom: 1px solid #bbb;
     padding-bottom: 1rem;
     font-weight: 900;

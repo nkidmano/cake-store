@@ -10,8 +10,7 @@
     <title>Cake</title>
 </head>
 
-<body>
-  <body class="container">
+<body class="container">
     <nav class="navbar">
         <div class="logo-box">
             <a href="#" class="logo-box__link">
@@ -59,9 +58,19 @@
       <div class="review">
         <div class="review__author">
           Johnny
+          <a href="#" class="js--edit-btn">Edit</a>
         </div>
-        <div class="review__comment">
+        <div class="review__comment js--review__comment">
           This bread is delicous!!!
+        </div>
+        <div class="review-create hidden mt-sm js--review-create">
+          <form action="#" method="POST" class="review-create__form">
+            <textarea class="review-create__input" maxlength="8000" placeholder="Write a review for this product"></textarea>
+            <div class="review-create__button-box">
+              <button type="submit" class="btn-review">Save</button>
+              <a href="#" class="btn-review--link js--cancel-btn">Cancel</a>
+            </div>
+          </form>
         </div>
       </div>
 
@@ -87,5 +96,6 @@
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
         crossorigin="anonymous"></script>
+    <script src="public/javascript/script.js"></script>
 </body>
 </html>
