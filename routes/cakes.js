@@ -5,11 +5,19 @@ const _ = require('lodash');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const cakes = await Cake.find();
-  res.render('cakes/index', { 
-    title: 'Menu',
-    cakes: cakes
-  });
+  if (req.query.search) {
+  const cakes = await Cake.find({ name: { $regex: req.query.search } });
+    res.render('cakes/index', { 
+      title: 'Menu',
+      cakes: cakes
+    });
+  } else {
+    const cakes = await Cake.find();
+    res.render('cakes/index', { 
+      title: 'Menu',
+      cakes: cakes
+    });
+  }
 });
 
 router.get('/new', (req, res) => {

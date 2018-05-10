@@ -20,16 +20,14 @@
                 <a href="#" class="cake__order">Order now</a>
                 <span class="cake__price">$<%= cake.price %></span>   
             </div>
-            <%  if (user) { %>
-              <% if (user.isAdmin) { %>
+              <% if (user && user.isAdmin) { %>
                 <div class="cake__admin-area">
                   <a class="btn-edit--link" href="/cakes/<%= cake._id %>/edit">Edit</a>
                   <form action="/cakes/<%= cake._id %>?_method=DELETE" method="POST">
                     <button class="btn-cake">Delete</button>
                   </form>
-                    <% } %>
                 </div>
-            <% } %>
+              <% } %>
         </div>
         
         <% }); %>
