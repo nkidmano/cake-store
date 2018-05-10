@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   if (req.query.search) {
-  const cakes = await Cake.find({ name: { $regex: req.query.search } });
+    const cakes = await Cake.find({ name: { $regex: req.query.search, $options: 'i' } });
     res.render('cakes/index', { 
       title: 'Menu',
       cakes: cakes
