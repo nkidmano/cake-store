@@ -22,11 +22,13 @@
             </div>
             <%  if (user) { %>
               <% if (user.isAdmin) { %>
-                <form action="/cakes/<%= cake._id %>?_method=DELETE" method="POST">
-                  <button>Delete</button>
-                </form>
-                <a href="/cakes/<%= cake._id %>/edit">EDIT</a>
-                  <% } %>
+                <div class="cake__admin-area">
+                  <a class="btn-edit--link" href="/cakes/<%= cake._id %>/edit">Edit</a>
+                  <form action="/cakes/<%= cake._id %>?_method=DELETE" method="POST">
+                    <button class="btn-cake">Delete</button>
+                  </form>
+                    <% } %>
+                </div>
             <% } %>
         </div>
         
