@@ -90,7 +90,7 @@ router.post('/forgot', (req, res) => {
         service: 'Gmail',
         auth: {
           user: 'duongthanhtan96@gmail.com',
-          pass: process.env.GMAILPW
+          pass: process.env.gmail_password
         }
       });
       const mailOptions = {
@@ -105,7 +105,7 @@ router.post('/forgot', (req, res) => {
       });
     }
   ], function(err) {
-    if (err) return next(err);
+    if (err) return res.send('Something wrong');
     res.send('A password reset link has been sent to your email adress.');
   });
 });
@@ -128,11 +128,11 @@ router.post('/reset/:token', (req, res) => {
                 user.resetPasswordToken = undefined;
                 user.resetPasswordExpires = undefined;
 
-                // user.save(function(err) {
-                //   req.logIn(user, function(err) {
-                //     done(err, user);
-                //   });
-                // });
+                user.save(function(err) {
+                  req.logIn(user, function(err) {
+                    done(err, user);
+                  });
+                });
               });
             } else {
               return res.status(400).send('Passwords do not match.');
@@ -141,14 +141,14 @@ router.post('/reset/:token', (req, res) => {
         );
       },
       function(user, done) {
-        var smtpTransport = nodemailer.createTransport({
+        const smtpTransport = nodemailer.createTransport({
           service: 'Gmail',
           auth: {
             user: 'duongthanhtan96@gmail.com',
-            pass: process.env.GMAILPW
+            pass: process.env.gmail_password
           }
         });
-        var mailOptions = {
+        const mailOptions = {
           to: user.email,
           from: 'duongthanhtan96@gmail.com',
           subject: 'Your password has been changed',

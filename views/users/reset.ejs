@@ -1,7 +1,17 @@
 <% include ../partials/header %>
 
-<form action="/users/reset/<%= token %>" method="POST">
-  
-</form>
+<div class="reset">
+  <h1 class="reset-heading heading-1 mt-sm mb-sm">Reset Password</h1>
+
+  <form action="/users/reset/<%= token %>" method="POST" class="reset-form">
+    <div class="reset-form__group">
+      <input type="password" class="reset-form__input" name="password" placeholder="Password" required>
+    </div>
+    <div class="reset-form__group">
+      <input type="password" class="reset-form__input" name="passwordCheck" placeholder="Cofirm password" required>
+    </div>
+    <button type="submit" class="btn">Update password</button>
+  </form>
+</div>
 
 <% include ../partials/footer %>
