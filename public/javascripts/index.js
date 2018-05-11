@@ -1,4 +1,6 @@
-function editBtnView() {
+reviewEditBtn();
+
+function reviewEditBtn() {
   const reviews = document.querySelectorAll('.review');
 
   reviews.forEach(review => {
@@ -25,4 +27,3 @@ function editBtnView() {
     });
   });
 }
-editBtnView();
