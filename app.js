@@ -11,6 +11,7 @@ const { User } = require('./models/user');
 // Require routes
 const cakes = require('./routes/cakes');
 const users = require('./routes/users');
+const cart = require('./routes/cart');
 const reviews = require('./routes/reviews');
 
 // Init app
@@ -43,14 +44,15 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next){
-  res.locals.user = req.user;
+app.get('*', function(req, res, next){
+  res.locals.user = req.user || false;
   next();
 });
 
 // Set routes
 app.use('/cakes', cakes);
 app.use('/users', users);
+app.use('/cart', cart);
 app.use('/cakes/:id/reviews', reviews);
 
 // Start the server

@@ -1,5 +1,4 @@
 const { Cake, validate } = require('../models/cake');
-const mongoose = require('mongoose');
 const express = require('express');
 const _ = require('lodash');
 const router = express.Router();

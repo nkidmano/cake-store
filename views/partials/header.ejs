@@ -23,14 +23,20 @@
         <i class="category-nav__icon far fa-list-alt"></i>
       </li>
       <li class="category-nav__item">
-        <a href="/top" class="category-nav__link">Top 10</a>
+        <a href="/top" class="category-nav__link">Top</a>
         <i class="category-nav__icon fas fa-trophy"></i>
       </li>
       <li class="category-nav__item">
         <a href="/map" class="category-nav__link">Map</a>
         <i class="category-nav__icon fas fa-map"></i>
       </li>
-      <%  if (user && user.isAdmin) { %>
+      <%  if (!user.isAdmin) { %>
+        <li class="category-nav__item">
+          <a href="/map" class="category-nav__link">Cart</a>
+          <i class="category-nav__icon fas fa-shopping-cart"></i>
+        </li>
+      <% } %>
+      <%  if (user.isAdmin) { %>
         <li class="category-nav__item">
           <a href="/cakes/new" class="category-nav__link">ADD</a>
           <i class="category-nav__icon fas fa-plus"></i>

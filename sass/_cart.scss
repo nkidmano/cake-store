@@ -1,0 +1,30 @@
+.cart {
+  grid-column: center-start / center-end;
+
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+.cart-heading {
+  grid-column: 1 / -1;
+  text-align: center;
+
+  @media only screen and (max-width: $bp-largest) {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.cart-table {
+  grid-column: 2 / 3;
+
+  &__head {
+    font-size: 1.75rem;
+    font-weight: 900;
+  }
+
+  &__body {
+    font-size: 1.5rem;
+  }
+}
