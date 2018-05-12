@@ -541,9 +541,17 @@ body {
       margin-bottom: 3rem; } }
 
 .cart-table {
-  grid-column: 2 / 3; }
+  grid-column: 2 / 3;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  border: 1px solid black; }
   .cart-table__head {
     font-size: 1.75rem;
     font-weight: 900; }
   .cart-table__body {
     font-size: 1.5rem; }
+    .cart-table__body tr > * {
+      padding: 1rem 0; }
+  .cart-table__foot {
+    font-size: 1.5rem;
+    font-weight: 900; }

@@ -11,7 +11,7 @@ const { User } = require('./models/user');
 // Require routes
 const cakes = require('./routes/cakes');
 const users = require('./routes/users');
-const cart = require('./routes/cart');
+const orders = require('./routes/orders');
 const reviews = require('./routes/reviews');
 
 // Init app
@@ -52,7 +52,7 @@ app.get('*', function(req, res, next){
 // Set routes
 app.use('/cakes', cakes);
 app.use('/users', users);
-app.use('/cart', cart);
+app.use('/orders', orders);
 app.use('/cakes/:id/reviews', reviews);
 
 // Start the server
