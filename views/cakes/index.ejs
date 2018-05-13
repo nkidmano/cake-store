@@ -17,7 +17,7 @@
                 <%= cake.description %>
             </div>
             <div class="cake__info">
-                <a href="#" class="cake__order">Order now</a>
+                <a href="/orders/<%= cake._id %>" class="cake__order">Order now</a>
                 <span class="cake__price">$<%= cake.price %></span>   
             </div>
               <% if (user && user.isAdmin) { %>

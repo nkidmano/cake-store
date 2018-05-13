@@ -46,6 +46,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get('*', function(req, res, next){
   res.locals.user = req.user || false;
+  res.locals.orders = req.session.orders;
   next();
 });
 

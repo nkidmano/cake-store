@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+
+  <div class="cart">
+
+    <% if (typeof orders !== 'undefined') { %>
+      <h1 class="cart-heading heading-1 mt-sm mb-sm">Cart</h1>
+      <table class="cart-table">
+        <thead class="cart-table__head">
+          <tr>
+            <td>Cake</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td></td>
+            <td>Subtotal</td>
+          </tr>
+        </thead>
+        <% let total = 0 %>
+        <tbody class="cart-table__body">
+          <% orders.forEach(function(order) { %>
+            <% let subtotal = parseFloat(order.price * order.quantity).toFixed(2) %>
+            <% total += +subtotal %>
+            <tr>
+              <td><%= order.name %></td>
+              <td>$<%= order.price %></td>
+              <td><%= order.quantity %></td>
+              <td>
+                <a href="/orders/<%= order.id %>/update?action=add">+</a>&nbsp;
+                <a href="/orders/<%= order.id %>/update?action=remove">-</a>&nbsp;
+                <a href="/orders/<%= order.id %>/update?action=clear">Clear</a>
+              </td>
+              <td>$<%= subtotal %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+        <tfoot class="cart-table__foot">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>$Total</td>
+            <td>$<%= parseFloat(total).toFixed(2) %></td>
+          </tr>
+        </tfoot>
+      </table>
+    <% } else { %>
+      <h1 class="cart-heading heading-1 mt-sm mb-sm">Cart Empty</h1>
+    <% } %>
+    
+  </div>
+
+<% include ../partials/footer %>
