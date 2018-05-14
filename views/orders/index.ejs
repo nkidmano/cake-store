@@ -10,7 +10,7 @@
             <td>Cake</td>
             <td>Price</td>
             <td>Quantity</td>
-            <td></td>
+            <td>Actions</td>
             <td>Subtotal</td>
           </tr>
         </thead>
@@ -24,9 +24,9 @@
               <td>$<%= order.price %></td>
               <td><%= order.quantity %></td>
               <td>
-                <a href="/orders/<%= order.id %>/update?action=add">+</a>&nbsp;
-                <a href="/orders/<%= order.id %>/update?action=remove">-</a>&nbsp;
-                <a href="/orders/<%= order.id %>/update?action=clear">Clear</a>
+                <a class="cart-table__link" href="/orders/<%= order.id %>/update?action=add"><i class="fas fa-plus"></i></a>&nbsp;
+                <a class="cart-table__link" href="/orders/<%= order.id %>/update?action=remove"><i class="fas fa-minus"></i></a>&nbsp;
+                <a class="cart-table__link" href="/orders/<%= order.id %>/update?action=clear"><i class="fas fa-eraser"></i></a>
               </td>
               <td>$<%= subtotal %></td>
             </tr>
@@ -42,6 +42,26 @@
           </tr>
         </tfoot>
       </table>
+      <div class="cart-btn-box">
+
+        <form class="pp" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_cart">
+          <input type="hidden" name="upload" value="1">
+          <input type="hidden" name="business" value="jultranet-facilitator@gmail.com">
+          <% let number = 0; %>
+          <% orders.forEach(function(order){ %>
+              <% number++ %>
+              <input type="hidden" name="item_name_<%= number %>" value="<%= order.name %>">
+              <input type="hidden" name="amount_<%= number %>" value="<%= order.price %>">
+              <input type="hidden" name="quantity_<%= number %>" value="<%= order.quantity %>">
+          <% }); %>
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="hidden" name="amount" value="<%= total %>">
+          <input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+        </form>
+        
+        
+      </div>
     <% } else { %>
       <h1 class="cart-heading heading-1 mt-sm mb-sm">Cart Empty</h1>
     <% } %>

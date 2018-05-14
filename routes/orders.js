@@ -3,9 +3,7 @@ const { Cake } = require('../models/cake');
 const { Order } = require('../models/order');
 const router = express.Router();
 
-// /orders => show all order
-// /orders/:cakeid => have a form to send post request that have cakeId and Quantity that you want to order
-
+// Show all orders
 router.get('/', async (req, res) => {
   res.render('orders/index', {
     title: 'Orders',
@@ -13,7 +11,7 @@ router.get('/', async (req, res) => {
   });
 });
 
-// GET add a cake to cart
+// Add an item to a the cart
 router.get('/:cake_id', async (req, res) => {
   const cake = await Cake.findById(req.params.cake_id);
   if (!cake) return res.status(400).send('Bad request');
@@ -47,6 +45,36 @@ router.get('/:cake_id', async (req, res) => {
         price: parseFloat(cake.price).toFixed(2),
         image: ''
       });
+    }
+  }
+  res.redirect('back');
+});
+
+// Add remove clear cart action
+router.get('/:cake_id/update', (req, res) => {
+  const orders = req.session.orders;
+  const action = req.query.action;
+
+  for (let i = 0; i < orders.length; i++) {
+    if (orders[i].id == req.params.cake_id) {
+      switch(action) {
+        case "add":
+          orders[i].quantity++;
+          break;
+        case "remove":
+          orders[i].quantity--;
+          if (orders[i].quantity == 0) orders.splice(i, 1);
+          if (orders.length == 0) delete req.session.orders;
+          break;
+        case "clear":
+          orders.splice(i, 1);
+          if (orders.length == 0) delete req.session.orders;
+          break;
+        default:
+          console.log('update problem');
+          break;
+      }
+      break;
     }
   }
   res.redirect('back');

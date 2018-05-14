@@ -1,5 +1,6 @@
 .cart {
   grid-column: center-start / center-end;
+  grid-row-gap: 1.5rem;
 
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
@@ -24,7 +25,7 @@
   border: 1px solid black;
 
   &__head {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 900;
   }
 
@@ -37,7 +38,26 @@
   }
 
   &__foot {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 900;
   }
+
+  &__link:link,
+  &__link:visited {
+    color: black;
+    text-decoration: none;
+  }
 }
+
+.cart-btn-box {
+  grid-column: 2 / 3;
+
+  display: flex;
+  justify-content: flex-end;
+  
+  font-size: 1.75rem;
+
+  &:last-of-type {
+    margin-left: .75rem;
+  }
+} 
