@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+
+  <div class="top mb-lg">
+
+    <h1 class="top-heading heading-1 mt-sm mb-sm">Top Sales</h1>
+    <table class="top-table">
+      <thead class="top-table__head">
+        <tr>
+          <td>Photo</td>  
+          <td>Ranking</td>
+          <td>Name</td>
+        </tr>
+      </thead>
+      <% let ranking = 1 %>
+      <tbody class="top-table__body">
+        <% cakes.forEach(function(cake) { %>
+          <tr>
+            <td><img src="<%= cake.image %>" alt="Cake" class="top-table__photo"></td>
+            <td><%= ranking++ %></td>
+            <td><%= cake.name %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <% include ../partials/footer %>

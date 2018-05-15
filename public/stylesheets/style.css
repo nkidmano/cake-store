@@ -591,3 +591,39 @@ body {
   font-size: 1.75rem; }
   .cart-btn-box:last-of-type {
     margin-left: .75rem; }
+
+.top {
+  grid-column: center-start / center-end;
+  grid-row-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-content: center;
+  align-items: center; }
+
+.top-heading {
+  grid-column: 1 / -1;
+  text-align: center; }
+  @media only screen and (max-width: 62.5em) {
+    .top-heading {
+      margin-top: 4rem;
+      margin-bottom: 3rem; } }
+
+.top-table {
+  grid-column: 2 / 3;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  border: 1px solid black; }
+  .top-table__photo {
+    display: block;
+    width: 200px;
+    max-width: 100%; }
+  .top-table__head {
+    font-size: 1.5rem;
+    font-weight: 900; }
+  .top-table__body {
+    font-size: 1.5rem; }
+    .top-table__body tr > * {
+      padding: 1rem 0; }
+  .top-table__link:link, .top-table__link:visited {
+    color: black;
+    text-decoration: none; }

@@ -25,6 +25,10 @@ const cakeSchema = new mongoose.Schema({
     min: 1,
     max: 50
   },
+  record: {
+    type: Number,
+    default: 0
+  },
   reviews: [reviewSchema]
 });
 

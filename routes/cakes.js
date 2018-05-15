@@ -19,6 +19,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+// top 10 cakes
+router.get('/top', async (req, res) => {
+  const cakes = await Cake.find().sort('-record').limit(10);
+  res.render('top/index', {
+    title: 'Top 10',
+    cakes: cakes
+  })
+});
+
 router.get('/new', (req, res) => {
   res.render('cakes/new', {
     title: 'Add cake',

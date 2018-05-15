@@ -1,6 +1,7 @@
 const express = require('express');
 const { Cake } = require('../models/cake');
 const { Order } = require('../models/order');
+const { isLoggedIn } = require('../middleware/auth');
 const router = express.Router();
 
 // Show all orders
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 // Add an item to a the cart
-router.get('/:cake_id', async (req, res) => {
+router.get('/:cake_id', isLoggedIn, async (req, res) => {
   const cake = await Cake.findById(req.params.cake_id);
   if (!cake) return res.status(400).send('Bad request');
 
