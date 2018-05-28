@@ -55,6 +55,9 @@ app.use('/cakes', cakes);
 app.use('/users', users);
 app.use('/orders', orders);
 app.use('/cakes/:id/reviews', reviews);
+app.use('/', (req, res) => {
+  res.redirect('/cakes');
+});
 
 // Start the server
 const port = process.env.PORT || 3000;

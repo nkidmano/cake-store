@@ -19,7 +19,6 @@ router.get('/', async (req, res) => {
       cakes: cakes
     });
   }
-  console.log(process.env);
 });
 
 // GET: top 10 cakes page

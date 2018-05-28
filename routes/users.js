@@ -41,6 +41,7 @@ router.get('/reset/:token', async (req, res) => {
 
 // GET: logout
 router.get('/logout', async (req, res) => {
+  delete req.session.orders;
   await req.logout();
   res.redirect('/cakes');
 });
@@ -99,7 +100,7 @@ router.post('/forgot', (req, res) => {
         service: 'Gmail',
         auth: {
           user: 'developmentmaildtt96@gmail.com',
-          pass: process.env.gmail_password
+          pass: 'duongthanhtan96'
         }
       });
       const mailOptions = {
@@ -155,7 +156,7 @@ router.post('/reset/:token', (req, res) => {
           service: 'Gmail',
           auth: {
             user: 'developmentmaildtt96@gmail.com',
-            pass: process.env.gmail_password
+            pass: 'duongthanhtan96'
           }
         });
         const mailOptions = {
