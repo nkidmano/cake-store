@@ -1,3 +1,4 @@
+// Require packages
 const express = require('express');
 const { Cake } = require('../models/cake');
 const { Order } = require('../models/order');
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
   });
 });
 
-// Add an item to a the cart
+// Add an item to the cart
 router.get('/:cake_id', isLoggedIn, async (req, res) => {
   const cake = await Cake.findById(req.params.cake_id);
   if (!cake) return res.status(400).send('Bad request');
@@ -24,7 +25,7 @@ router.get('/:cake_id', isLoggedIn, async (req, res) => {
       name: cake.name,
       quantity: 1,
       price: parseFloat(cake.price).toFixed(2),
-      image: ''
+      image: cake.image
     });
     } else { // if its not
     const orders = req.session.orders;
@@ -44,7 +45,7 @@ router.get('/:cake_id', isLoggedIn, async (req, res) => {
         name: cake.name,
         quantity: 1,
         price: parseFloat(cake.price).toFixed(2),
-        image: ''
+        image: cake.image
       });
     }
   }

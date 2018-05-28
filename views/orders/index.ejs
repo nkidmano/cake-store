@@ -20,7 +20,7 @@
             <% let subtotal = parseFloat(order.price * order.quantity).toFixed(2) %>
             <% total += +subtotal %>
             <tr>
-              <td><%= order.name %></td>
+              <td><img src="<%= order.image %>" alt="Cake" class="top-table__photo"></td>
               <td>$<%= order.price %></td>
               <td><%= order.quantity %></td>
               <td>

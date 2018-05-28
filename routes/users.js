@@ -1,3 +1,4 @@
+// Require packages
 const { User, validateRegister, validateLogin } = require('../models/user');
 const mongoose = require('mongoose');
 const express = require('express');
@@ -8,18 +9,22 @@ const async = require('async');
 const nodemailer = require('nodemailer');
 const router = express.Router();
 
+// GET: register page
 router.get('/register', (req, res) => {
   res.render('users/register', {
     title: 'Sign up'
   });
 });
 
+// GET: login page
 router.get('/login', (req, res) => {
   res.render('users/login', {
     title: 'Login' 
   });
 });
 
+// GET: User's reset forgot password page
+// Route that handle reset password link that's been sent to user
 router.get('/reset/:token', async (req, res) => {
   const user = await User.findOne({
     resetPasswordToken: req.params.token,
@@ -34,6 +39,13 @@ router.get('/reset/:token', async (req, res) => {
   });
 });
 
+// GET: logout
+router.get('/logout', async (req, res) => {
+  await req.logout();
+  res.redirect('/cakes');
+});
+
+// POST: register account
 router.post('/register', async (req, res) => {
   const { error } = validateRegister(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -52,17 +64,14 @@ router.post('/register', async (req, res) => {
   });
 });
 
+// POST: login account
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/cakes',
   failureRedirect: '/users/login'
   }) ,(req, res) => {
 });
 
-router.get('/logout', async (req, res) => {
-  await req.logout();
-  res.redirect('/cakes');
-});
-
+// POST: send reset password link to user email
 router.post('/forgot', (req, res) => {
   async.waterfall([
     function(done) {
@@ -89,13 +98,13 @@ router.post('/forgot', (req, res) => {
       const smtpTransport = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'duongthanhtan96@gmail.com',
+          user: 'developmentmaildtt96@gmail.com',
           pass: process.env.gmail_password
         }
       });
       const mailOptions = {
         to: user.email,
-        from: 'duongthanhtan96@gmail.com',
+        from: 'developmentmaildtt96@gmail.com',
         subject: 'Molino cake store password reset',
         text: `Your password reset link http://${req.headers.host}/users/reset/${token}`
       };
@@ -110,6 +119,7 @@ router.post('/forgot', (req, res) => {
   });
 });
 
+// POST: user update forgot password
 router.post('/reset/:token', (req, res) => {
   async.waterfall(
     [
@@ -144,13 +154,13 @@ router.post('/reset/:token', (req, res) => {
         const smtpTransport = nodemailer.createTransport({
           service: 'Gmail',
           auth: {
-            user: 'duongthanhtan96@gmail.com',
+            user: 'developmentmaildtt96@gmail.com',
             pass: process.env.gmail_password
           }
         });
         const mailOptions = {
           to: user.email,
-          from: 'duongthanhtan96@gmail.com',
+          from: 'developmentmaildtt96@gmail.com',
           subject: 'Your password has been changed',
           text:
             'Hello,\n\n' +

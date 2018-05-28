@@ -14,7 +14,7 @@
     <div class="review">
       <div class="review__author">
         <%= review.author.username %>
-        <% if (review.author.id.equals(user._id)) { %>
+        <% if (user.isAdmin || review.author.id.equals(user._id)) { %>
           <div>
             <a href="#" class="btn-review--link js--edit-btn">Edit</a>
           </div>

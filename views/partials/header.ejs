@@ -26,10 +26,6 @@
         <a href="/cakes/top" class="category-nav__link">Top</a>
         <i class="category-nav__icon fas fa-trophy"></i>
       </li>
-      <!-- <li class="category-nav__item">
-        <a href="/map" class="category-nav__link">Map</a>
-        <i class="category-nav__icon fas fa-map"></i>
-      </li> -->
       <%  if (!user.isAdmin) { %>
         <li class="category-nav__item">
           <a href="/orders" class="category-nav__link">Cart</a>
@@ -56,10 +52,10 @@
           <span class="user-nav_signup-text">sign up</span>
         </a>
       <% } else { %>
-        <a href="/users/profile" class="user-nav__login-link">
+        <span class="user-nav__login-link">
           <i class="user-nav__icon fas fa-user-circle"></i>
           <span class="user-nav__login-text"><%= user.username %></span>
-        </a>
+        </span>
         <a href="/users/logout" class="user-nav__signup-link">
           <span class="user-nav_signup-text">logout</span>
         </a>
